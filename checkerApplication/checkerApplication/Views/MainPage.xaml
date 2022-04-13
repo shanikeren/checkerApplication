@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
+             xmlns:local ="clr-namespace:checkerApplication.ViewModels;assembly=checkerApplication"
+
+             x:Class="checkerApplication.Views.MainPage" Title="Welcome to Checker" BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <Grid x:Name="GRID1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image
+                Grid.Row="0"
+                Grid.RowSpan="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Aspect="AspectFit"
+                Source="Cover1" />
+        <StackLayout
+                x:Name="SL1"
+                Grid.Row="2"
+                Grid.Column="3"
+                Grid.ColumnSpan="2"
+                Padding="10">
+            <Entry Placeholder="Email" />
+            <Entry IsPassword="{Binding Path=HidePassword}" Placeholder="Password" />
+            <StackLayout Orientation="Horizontal">
+                <Button
+                        x:Name=" EnterButton"
+                        BackgroundColor="#B6CACB"
+                        CornerRadius="15"
+                        Font="Large"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Log-in"
+                        TextColor="Black" 
+                         Command="{Binding LogInCommand}"/>
+                <Button
+                        x:Name=" SignButton"
+                        BackgroundColor="#B6CACB"
+                        Command="{Binding SignUpCommand}"
+                        CornerRadius="15"
+                        Font="Large"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Sign-up"
+                        TextColor="Black"
+                       />
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>   
+   

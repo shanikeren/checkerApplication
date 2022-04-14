@@ -6,14 +6,13 @@ using Xamarin.Forms;
 
 namespace checkerApplication.ViewModels
 {
-    internal class UpdateLinesViewModel
+    internal class UpdateMenuViewModel
     {
+        public Command SubmitAllCommand { get; set; }
 
-        public Command SubmitCommand { get; }
-
-        public UpdateLinesViewModel()
+        public UpdateMenuViewModel()
         {
-            SubmitCommand = new Command(async () => {
+            SubmitAllCommand = new Command(async () => {
                 var ManagerOptionsVM = new ManagerOptionsViewModel();
                 var ManagerOptionsPage = new ManagerOptionsPage();
                 ManagerOptionsPage.BindingContext = ManagerOptionsVM;
@@ -22,6 +21,3 @@ namespace checkerApplication.ViewModels
         }
     }
 }
-
-
-

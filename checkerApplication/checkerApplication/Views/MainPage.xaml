@@ -3,44 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:local ="clr-namespace:checkerApplication.ViewModels;assembly=checkerApplication"
              x:Class="checkerApplication.Views.MainPage" Title="Welcome to Checker" BackgroundColor="White"
-             NavigationPage.HasNavigationBar="True">
+             >
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
     </ContentPage.BindingContext>
 
 
-    <Grid x:Name="GRID1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.1*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Image
-                Grid.Row="0"
-                Grid.RowSpan="5"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Aspect="AspectFit"
+    <StackLayout  Orientation="Horizontal" >
+
+        <FlexLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+            <Image WidthRequest="395"
+                Aspect="AspectFill"
                 Source="Cover1" />
-        <StackLayout
+        </FlexLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"
                 x:Name="SL1"
-                Grid.Row="2"
-                Grid.Column="3"
-                Grid.ColumnSpan="2"
                 Padding="10">
             <Entry Placeholder="Email" />
             <Entry Placeholder="Password" />
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" >
                 <Button
                         x:Name=" EnterButton"
                     IsEnabled="True"
@@ -50,8 +32,7 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Log-in"
                         TextColor="Black" 
-                        Command="{Binding LogInCommand}"
-                      />
+                        Command="{Binding LogInCommand}"/>
                 <Button
                         x:Name=" SignButton"
                         BackgroundColor="#B6CACB"
@@ -62,7 +43,8 @@
                         Text="Sign-up"
                         TextColor="Black"/>
             </StackLayout>
+           
         </StackLayout>
-    </Grid>
+    </StackLayout>
 </ContentPage>   
    

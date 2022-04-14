@@ -20,17 +20,17 @@ namespace checkerApplication.ViewModels
         public MainPageViewModel()
         {
             LogInCommand = new Command(async () => {
-                var loggedVm = new OptionsPageViewModel();
-                var loggedPage = new OptionsPage();
-                loggedPage.BindingContext = loggedVm;
-                await Application.Current.MainPage.Navigation.PushAsync(loggedPage);
+                var OptionsVM = new OptionsPageViewModel();
+                var OptionsPage = new OptionsPage();
+                OptionsPage.BindingContext = OptionsVM;
+                await Application.Current.MainPage.Navigation.PushAsync(OptionsPage);
             });
 
             SignUpCommand = new Command(async () => {
-                var loggedVm = new SignUpViewModel();
-                var loggedPage = new SignUpPage();
-                loggedPage.BindingContext = loggedVm;
-                await Application.Current.MainPage.Navigation.PushAsync(loggedPage);
+                var SignUpVM = new SignUpViewModel();
+                var SignUpPage = new SignUpPage();
+                SignUpPage.BindingContext = SignUpVM;
+                await Application.Current.MainPage.Navigation.PushAsync(SignUpPage);
             });
         }
 

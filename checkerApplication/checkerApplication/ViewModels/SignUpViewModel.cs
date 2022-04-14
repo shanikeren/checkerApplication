@@ -1,4 +1,5 @@
-﻿using System;
+﻿using checkerApplication.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -14,7 +15,6 @@ namespace checkerApplication.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<string> UserDetails { get; set; } = new ObservableCollection<string>();
         public Command SignCommand { get; }
-        public Command ReturnCommand { get; }
 
 
         private string _mTempUserName;
@@ -78,21 +78,13 @@ namespace checkerApplication.ViewModels
         }
         public SignUpViewModel()
         {
-            /*SignCommand = new Command(async () =>
+            SignCommand = new Command(async () =>
             {
-                //Check if to last notes are good user name and password if so next page?
-                // else -Bad
-
-                /*var loggedVm = new ManagerOptionsPageViewModel();
-                var loggedPage = new ManagerOptionsPage();
-                loggedPage.BindingContext = loggedVm;
-                await Application.Current.MainPage.Navigation.PushAsync(loggedPage);
+                var OptionsVM = new OptionsPageViewModel();
+                var OptionsPage = new OptionsPage();
+                OptionsPage.BindingContext = OptionsVM;
+                await Application.Current.MainPage.Navigation.PushAsync(OptionsPage);
             });
-
-            ReturnCommand = new Command(async () =>
-            {
-                await Application.Current.MainPage.Navigation.PopAsync();
-            });*/
         }
     }
 }

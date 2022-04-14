@@ -16,6 +16,21 @@ namespace checkerApplication.Views
         public MainPage()
         {
             InitializeComponent();
+            /*switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    Grid.SetRow(SL1, 2);
+                    break;
+                case Device.Android:
+                    Grid.SetRow(SL1, 2);
+                    break;
+                case Device.UWP:
+                    Grid.SetRow(SL1, 4);
+                    break;
+            }*/
+
+
+
         }
     }
 }

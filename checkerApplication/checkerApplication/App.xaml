@@ -4,7 +4,8 @@
              xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
              windows:Application.ImageDirectory="Assets"
              x:Class="checkerApplication.App"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="True"
+             >
 
     <!--
         Define global resources and styles here, that apply to all pages in your app.

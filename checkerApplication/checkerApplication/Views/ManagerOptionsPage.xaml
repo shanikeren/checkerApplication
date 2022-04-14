@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels"
              x:Class="checkerApplication.Views.ManagerOptionsPage" Title="Manager Options">
-    <ContentPage.Content>
-        <Grid BackgroundColor="White">
+    
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+   
+    <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height=".5*"/>
                 <RowDefinition Height="*"/>
@@ -19,20 +23,25 @@
             </Grid.ColumnDefinitions>
             <StackLayout VerticalOptions="FillAndExpand" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="6" Grid.Row="1" >
                 <Button
+                Command="{Binding UpdateLinesCommand}"
                 Text="Update Lines" 
                 Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
                 <Button
+                Command="{Binding UpdateMenuCommand}"
                 Text="Update Menu" 
                 Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
                 <Button 
+                Command="{Binding UpdateIngredientsCommand}"
                 Text="Update Ingredients" Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="2" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
                 <Button 
+                Command="{Binding DiniedDishesCommand}"
                 Text="Dinied Dishes" Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="2" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
                 <Button 
+                Command="{Binding StatisitcsCommand}"
                 Text="Statistics" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
             </StackLayout>
@@ -41,5 +50,4 @@
                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Aspect="AspectFill" BackgroundColor="#B6CACB" >
             </Image>
         </Grid>
-    </ContentPage.Content>
 </ContentPage>

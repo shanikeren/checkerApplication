@@ -98,5 +98,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Cover1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\FileFormat.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -14,7 +14,7 @@ namespace checkerApplication
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new UpdateLinesPage());
+            MainPage = new NavigationPage(new MainPage()) { };
         }
 
         protected override void OnStart()

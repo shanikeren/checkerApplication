@@ -3,7 +3,8 @@
     x:Class="checkerApplication.Views.SignUpPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:local ="clr-namespace:checkerApplication.ViewModels;assembly=checkerApplication"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="Sign Up">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Sign Up">
 
     <ContentPage.BindingContext>
         <local:SignUpViewModel/>

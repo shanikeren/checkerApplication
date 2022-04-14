@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels"
              x:Class="checkerApplication.Views.OptionsPage">
-    <ContentPage.Content>
-        <Grid BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <local:OptionsPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height=".5*"/>
                 <RowDefinition Height="*"/>
@@ -20,10 +24,12 @@
             <StackLayout VerticalOptions="FillAndExpand" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="6" Grid.Row="1" >
                 <Button
                 Text="Lines" 
+                Command="{Binding LinesCommand}"
                 Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
                 <Button
                 Text="Manager Options" 
+                Command="{Binding ManagerOptionsCommand}"
                 Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
             </StackLayout>
@@ -32,5 +38,4 @@
                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Aspect="AspectFill" BackgroundColor="#B6CACB" >
             </Image>
         </Grid>
-    </ContentPage.Content>
 </ContentPage>

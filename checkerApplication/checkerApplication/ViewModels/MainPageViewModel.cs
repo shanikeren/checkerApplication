@@ -12,11 +12,27 @@ namespace checkerApplication.ViewModels
 {
     public class MainPageViewModel : TriggerAction<ImageButton>, INotifyPropertyChanged
     {
-        public Command LogInCommand { get; }
-        public Command SignUpCommand { get; }
+        public Command LogInCommand { get; set; }
+        public Command SignUpCommand { get; set; }
         public ObservableCollection<string> AllNotes { get; set; } = new ObservableCollection<string>();
         string _mUserName;
         private string _mPassword;
+        public MainPageViewModel()
+        {
+            LogInCommand = new Command(async () => {
+                var loggedVm = new OptionsPageViewModel();
+                var loggedPage = new OptionsPage();
+                loggedPage.BindingContext = loggedVm;
+                await Application.Current.MainPage.Navigation.PushAsync(loggedPage);
+            });
+
+            SignUpCommand = new Command(async () => {
+                var loggedVm = new SignUpViewModel();
+                var loggedPage = new SignUpPage();
+                loggedPage.BindingContext = loggedVm;
+                await Application.Current.MainPage.Navigation.PushAsync(loggedPage);
+            });
+        }
 
         public string ShowIcon { get; set; }
         public string HideIcon { get; set; }
@@ -63,23 +79,7 @@ namespace checkerApplication.ViewModels
             sender.Source = HidePassword ? ShowIcon : HideIcon;
             HidePassword = !HidePassword;
         }
-        public MainPageViewModel()
-
-        {
-            LogInCommand = new Command(async ()=> {
-                var loggedVm = new OptionsPageViewModel();
-                var loggedPage = new OptionsPage();
-                loggedPage.BindingContext = loggedVm;
-                await Application.Current.MainPage.Navigation.PushAsync(loggedPage);
-            }); 
-
-            SignUpCommand = new Command(async () => {
-                var loggedVm = new SignUpViewModel();
-                var loggedPage = new SignUpPage();
-                loggedPage.BindingContext = loggedVm;
-                await Application.Current.MainPage.Navigation.PushAsync(loggedPage);
-            });
-        }
+       
 
     }
 }

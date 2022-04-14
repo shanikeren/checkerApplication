@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:local ="clr-namespace:checkerApplication.ViewModels;assembly=checkerApplication"
-
-             x:Class="checkerApplication.Views.MainPage" Title="Welcome to Checker" BackgroundColor="White">
+             x:Class="checkerApplication.Views.MainPage" Title="Welcome to Checker" BackgroundColor="White"
+             NavigationPage.HasNavigationBar="True">
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -39,27 +39,28 @@
                 Grid.ColumnSpan="2"
                 Padding="10">
             <Entry Placeholder="Email" />
-            <Entry IsPassword="{Binding Path=HidePassword}" Placeholder="Password" />
+            <Entry Placeholder="Password" />
             <StackLayout Orientation="Horizontal">
                 <Button
                         x:Name=" EnterButton"
+                    IsEnabled="True"
                         BackgroundColor="#B6CACB"
-                        CornerRadius="15"
+                        CornerRadius="10"
                         Font="Large"
                         HorizontalOptions="FillAndExpand"
                         Text="Log-in"
                         TextColor="Black" 
-                         Command="{Binding LogInCommand}"/>
+                        Command="{Binding LogInCommand}"
+                      />
                 <Button
                         x:Name=" SignButton"
                         BackgroundColor="#B6CACB"
                         Command="{Binding SignUpCommand}"
-                        CornerRadius="15"
+                        CornerRadius="10"
                         Font="Large"
                         HorizontalOptions="FillAndExpand"
                         Text="Sign-up"
-                        TextColor="Black"
-                       />
+                        TextColor="Black"/>
             </StackLayout>
         </StackLayout>
     </Grid>

@@ -107,7 +107,7 @@
     <Content Include="Assets\CornerLogo.png" />
     <EmbeddedResource Include="Assets\Cover1.png" />
     <Content Include="CornerLogo.png" />
-    <EmbeddedResource Include="Cover1.png" />
+    <None Include="Cover1.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />

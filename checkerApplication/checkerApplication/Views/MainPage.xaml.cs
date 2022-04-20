@@ -16,18 +16,18 @@ namespace checkerApplication.Views
         public MainPage()
         {
             InitializeComponent();
-            /*switch (Device.RuntimePlatform)
+            switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
                     Grid.SetRow(SL1, 2);
                     break;
                 case Device.Android:
-                    Grid.SetRow(SL1, 2);
+                    Cover.Source = "Cover1";
                     break;
                 case Device.UWP:
-                    Grid.SetRow(SL1, 4);
+                    Cover.Source = ImageSource.FromFile("C: \\Users\\Eliran\\source\\repos\\shanikeren\\checkerApplication\\checkerApplication\\checkerApplication.UWP\\Cover1.png");
                     break;
-            }*/
+            }
 
 
 

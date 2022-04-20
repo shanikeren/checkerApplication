@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:local ="clr-namespace:checkerApplication.ViewModels;assembly=checkerApplication"
-             x:Class="checkerApplication.Views.MainPage" Title="Welcome to Checker" BackgroundColor="White"
-             >
+             x:Class="checkerApplication.Views.MainPage" 
+             Title="Welcome to Checker" 
+             BackgroundColor="White"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -12,11 +16,12 @@
 
     <StackLayout  Orientation="Horizontal" >
 
-        <FlexLayout HorizontalOptions="Fill" VerticalOptions="Fill">
-            <Image WidthRequest="395"
-                Aspect="AspectFill"
-                Source="Cover1" />
+        <FlexLayout HorizontalOptions="Fill" VerticalOptions="Fill" IsEnabled="False" IsVisible="True" JustifyContent="Start" InputTransparent="False" IsClippedToBounds="False" IsTabStop="False" AutomationProperties.IsInAccessibleTree="False" Wrap="NoWrap">
+            <Image x:Name="Cover"
+                WidthRequest="395"
+                Aspect="AspectFill" />
         </FlexLayout>
+        
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"
                 x:Name="SL1"
                 Padding="10">

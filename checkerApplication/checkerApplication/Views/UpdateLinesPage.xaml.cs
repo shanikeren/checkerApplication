@@ -15,6 +15,21 @@ namespace checkerApplication.Views
         public UpdateLinesPage()
         {
             InitializeComponent();
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    break;
+                case Device.Android:
+                    break;
+                case Device.UWP:
+                    OutlineName.WidthRequest = 205;
+                    OutlineLimit.WidthRequest = 205;
+                    LineName.WidthRequest = 135;
+                    ChooseOutline.WidthRequest = 135;
+                    LineLimit.WidthRequest = 135;
+                    break;
+            }
         }
     }
 }

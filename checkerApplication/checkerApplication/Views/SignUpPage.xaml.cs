@@ -15,6 +15,15 @@ namespace checkerApplication.Views
         public SignUpPage()
         {
             InitializeComponent();
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    break;
+                case Device.Android:
+                    break;
+                case Device.UWP:
+                    break;
+            }
         }
     }
 }

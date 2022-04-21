@@ -17,9 +17,9 @@
     <StackLayout  Orientation="Horizontal" >
 
         <FlexLayout HorizontalOptions="Fill" VerticalOptions="Fill" IsEnabled="False" IsVisible="True" JustifyContent="Start" InputTransparent="False" IsClippedToBounds="False" IsTabStop="False" AutomationProperties.IsInAccessibleTree="False" Wrap="NoWrap">
-            <Image x:Name="Cover"
+            <Image x:Name="Cover" Source="Cover1.png"
                 WidthRequest="395"
-                Aspect="AspectFill" />
+                Aspect="AspectFit" />
         </FlexLayout>
         
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"

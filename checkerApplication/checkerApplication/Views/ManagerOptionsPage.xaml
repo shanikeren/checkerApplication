@@ -45,8 +45,8 @@
                 Text="Statistics" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
             </StackLayout>
-            <Image 
-                Source="Cover1" 
+            <Image x:Name="Cover"
+                Source="Cover1.png" 
                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Aspect="AspectFill" BackgroundColor="#B6CACB" >
             </Image>
         </Grid>

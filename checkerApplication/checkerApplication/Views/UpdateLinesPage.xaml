@@ -58,7 +58,7 @@
                     <!--sholud be dynamic list of the existing line (2 lists)
                     with options of remove or change-->
                 </StackLayout>
-                <Image Source="CornerLogo" Grid.Row="0" Grid.Column="4" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+                <Image x:Name="Logo" Source="CornerLogo.png" Grid.Row="0" Grid.Column="4" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
         <Button Text="submit all" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="1" BackgroundColor="PowderBlue" CornerRadius="15" Command="{Binding SubmitCommand}" />
             </Grid>
             

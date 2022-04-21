@@ -55,12 +55,13 @@
                 VerticalOptions="FillAndExpand" />
             </StackLayout>
             <Image
+                x:Name="Cover"
                 Grid.Row="0"
                 Grid.RowSpan="8"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 Aspect="AspectFill"
-                Source="Cover1" />
+                Source="Cover1.png" />
           
         </Grid>
     </ContentPage.Content>

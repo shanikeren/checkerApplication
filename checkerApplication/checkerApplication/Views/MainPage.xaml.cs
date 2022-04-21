@@ -22,10 +22,8 @@ namespace checkerApplication.Views
                     Grid.SetRow(SL1, 2);
                     break;
                 case Device.Android:
-                    Cover.Source = "Cover1";
                     break;
                 case Device.UWP:
-                    Cover.Source = ImageSource.FromFile("C: \\Users\\Eliran\\source\\repos\\shanikeren\\checkerApplication\\checkerApplication\\checkerApplication.UWP\\Cover1.png");
                     break;
             }
 

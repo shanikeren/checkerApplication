@@ -15,6 +15,15 @@ namespace checkerApplication.Views
         public ManagerOptionsPage()
         {
             InitializeComponent();
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS:
+                    break;
+                case Device.Android:
+                    break;
+                case Device.UWP:
+                    break;
+            }
         }
     }
 }

@@ -105,9 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CornerLogo.png" />
-    <EmbeddedResource Include="Assets\Cover1.png" />
-    <Content Include="CornerLogo.png" />
-    <None Include="Cover1.png" />
+    <Content Include="Assets\Cover1.png" />
+    <Content Include="Assets\FileFormat.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />

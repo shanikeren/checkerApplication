@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels"
              x:Class="checkerApplication.Views.OptionsPage"
-             Title="Options">
+             Title="Options" AutomationProperties.IsInAccessibleTree="False" BackgroundColor="White">
 
     <ContentPage.BindingContext>
         <local:OptionsPageViewModel/>
     </ContentPage.BindingContext>
-    
-    <Grid BackgroundColor="White">
-            <Grid.RowDefinitions>
+
+    <Grid Padding="0,0,30,0" >
+        <Grid.RowDefinitions>
                 <RowDefinition Height=".5*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -22,22 +22,22 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackLayout VerticalOptions="FillAndExpand" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="6" Grid.Row="1" >
+            <StackLayout VerticalOptions="Center" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="6" Grid.Row="1" HorizontalOptions="FillAndExpand" >
                 <Button
                 Text="Lines" 
                 Command="{Binding LinesCommand}"
-                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12">
-                </Button>
+                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12" FontSize="Body"/>
                 <Button
                 Text="Manager Options" 
                 Command="{Binding ManagerOptionsCommand}"
                 Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12">
                 </Button>
             </StackLayout>
+           
             <Image 
                 x:Name="Cover"
                 Source="Cover1.png" 
-                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Aspect="AspectFill" BackgroundColor="#B6CACB" >
+                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Aspect="AspectFit"  >
             </Image>
         </Grid>
 </ContentPage>

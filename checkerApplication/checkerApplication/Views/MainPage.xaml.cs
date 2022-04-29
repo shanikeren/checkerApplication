@@ -22,8 +22,10 @@ namespace checkerApplication.Views
                     Grid.SetRow(SL1, 2);
                     break;
                 case Device.Android:
+                    Cover.WidthRequest = 395;
                     break;
                 case Device.UWP:
+                    Cover.WidthRequest = 700;
                     break;
             }
 

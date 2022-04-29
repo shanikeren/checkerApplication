@@ -4,10 +4,9 @@
              xmlns:local ="clr-namespace:checkerApplication.ViewModels;assembly=checkerApplication"
              x:Class="checkerApplication.Views.MainPage" 
              Title="Welcome to Checker" 
-             BackgroundColor="White"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d">
+             mc:Ignorable="d" BackgroundColor="White">
 
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -16,28 +15,30 @@
 
     <StackLayout  Orientation="Horizontal" >
 
-        <FlexLayout HorizontalOptions="Fill" VerticalOptions="Fill" IsEnabled="False" IsVisible="True" JustifyContent="Start" InputTransparent="False" IsClippedToBounds="False" IsTabStop="False" AutomationProperties.IsInAccessibleTree="False" Wrap="NoWrap">
+        <FlexLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" IsEnabled="False" IsVisible="True" JustifyContent="Center"  MinimumHeightRequest="0" MinimumWidthRequest="0" >
             <Image x:Name="Cover" Source="Cover1.png"
-                WidthRequest="395"
                 Aspect="AspectFit" />
         </FlexLayout>
         
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"
+        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
                 x:Name="SL1"
-                Padding="10">
-            <Entry Placeholder="Email" />
-            <Entry Placeholder="Password" />
+                Padding="10" WidthRequest="300">
+            <Entry Placeholder="Email" ClearButtonVisibility="WhileEditing" />
+            <Entry Placeholder="Password" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" />
             <StackLayout Orientation="Horizontal" >
                 <Button
                         x:Name=" EnterButton"
-                    IsEnabled="True"
+                        IsEnabled="True"
                         BackgroundColor="#B6CACB"
                         CornerRadius="10"
                         Font="Large"
                         HorizontalOptions="FillAndExpand"
                         Text="Log-in"
-                        TextColor="Black" 
-                        Command="{Binding LogInCommand}"/>
+                        TextColor="#000000" 
+                        Command="{Binding LogInCommand}" TextTransform="Default" BorderColor="#8C9B9A" BorderWidth="5" AutomationProperties.IsInAccessibleTree="False" AutomationProperties.HelpText="" Visual="Material" FontSize="Body"
+                    />
+
+                
                 <Button
                         x:Name=" SignButton"
                         BackgroundColor="#B6CACB"
@@ -46,7 +47,7 @@
                         Font="Large"
                         HorizontalOptions="FillAndExpand"
                         Text="Sign-up"
-                        TextColor="Black"/>
+                        TextColor="Black" TextTransform="None" CharacterSpacing="0" BorderColor="#8C9B9A" BorderWidth="5" FontSize="Body"/>
             </StackLayout>
            
         </StackLayout>

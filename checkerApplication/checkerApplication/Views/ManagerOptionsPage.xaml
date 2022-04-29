@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels"
-             x:Class="checkerApplication.Views.ManagerOptionsPage" Title="Manager Options">
+             x:Class="checkerApplication.Views.ManagerOptionsPage" Title="Manager Options" BackgroundColor="White">
     
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
     </ContentPage.BindingContext>
    
-    <Grid BackgroundColor="White">
+    <Grid BackgroundColor="White" Padding="0,0,30,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height=".5*"/>
                 <RowDefinition Height="*"/>
@@ -21,7 +21,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <StackLayout VerticalOptions="FillAndExpand" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="6" Grid.Row="1" >
+            <StackLayout VerticalOptions="CenterAndExpand" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="6" Grid.Row="1" >
                 <Button
                 Command="{Binding UpdateLinesCommand}"
                 Text="Update Lines" 
@@ -47,7 +47,7 @@
             </StackLayout>
             <Image x:Name="Cover"
                 Source="Cover1.png" 
-                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Aspect="AspectFill" BackgroundColor="#B6CACB" >
+                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8" Aspect="AspectFit" >
             </Image>
         </Grid>
 </ContentPage>

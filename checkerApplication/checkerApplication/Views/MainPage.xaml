@@ -22,10 +22,10 @@
         
         <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
                 x:Name="SL1"
-                Padding="10" WidthRequest="300">
+                Padding="10">
             <Entry Placeholder="Email" ClearButtonVisibility="WhileEditing" />
             <Entry Placeholder="Password" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" />
-            <StackLayout Orientation="Horizontal" >
+            <StackLayout Orientation="Horizontal" WidthRequest="300" >
                 <Button
                         x:Name=" EnterButton"
                         IsEnabled="True"
@@ -35,7 +35,7 @@
                         HorizontalOptions="FillAndExpand"
                         Text="Log-in"
                         TextColor="#000000" 
-                        Command="{Binding LogInCommand}" TextTransform="Default" BorderColor="#8C9B9A" BorderWidth="5" AutomationProperties.IsInAccessibleTree="False" AutomationProperties.HelpText="" Visual="Material" FontSize="Body"
+                        Command="{Binding LogInCommand}" BorderColor="#8C9B9A" BorderWidth="5" FontSize="Body"
                     />
 
                 
@@ -47,7 +47,7 @@
                         Font="Large"
                         HorizontalOptions="FillAndExpand"
                         Text="Sign-up"
-                        TextColor="Black" TextTransform="None" CharacterSpacing="0" BorderColor="#8C9B9A" BorderWidth="5" FontSize="Body"/>
+                        TextColor="Black"  BorderColor="#8C9B9A" BorderWidth="5" FontSize="Body"/>
             </StackLayout>
            
         </StackLayout>

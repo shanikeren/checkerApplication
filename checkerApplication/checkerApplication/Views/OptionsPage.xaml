@@ -26,11 +26,11 @@
                 <Button
                 Text="Lines" 
                 Command="{Binding LinesCommand}"
-                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12" FontSize="Body"/>
+                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12" FontSize="Body" BorderColor="#8C9B9A" BorderWidth="5" />
                 <Button
                 Text="Manager Options" 
                 Command="{Binding ManagerOptionsCommand}"
-                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12">
+                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#B6CACB" CornerRadius="12" BorderColor="#8C9B9A" BorderWidth="5" >
                 </Button>
             </StackLayout>
            

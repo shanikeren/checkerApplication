@@ -52,7 +52,7 @@
                 CornerRadius="12"
                 HorizontalOptions="FillAndExpand"
                 Text="Sign-Up"
-                VerticalOptions="FillAndExpand" />
+                VerticalOptions="FillAndExpand" BorderColor="#8C9B9A" BorderWidth="5"  />
             </StackLayout>
             <Image
                 x:Name="Cover"

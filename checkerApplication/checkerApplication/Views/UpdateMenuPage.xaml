@@ -31,7 +31,7 @@
                 <Entry x:Name="DishName" FontAttributes="Bold" Placeholder="Dish name" HorizontalOptions="StartAndExpand" />
                 <Entry x:Name="DishDesc" FontAttributes="Bold" Placeholder="Description" HorizontalOptions="CenterAndExpand"/>
                 <Entry x:Name="DishLine" FontAttributes="Bold" Placeholder="Choose line name" HorizontalOptions="EndAndExpand" />
-            <Button Text="Add dish" CornerRadius="15" BackgroundColor="#B6CACB"/>
+                <Button Text="Add dish" CornerRadius="15" BackgroundColor="#B6CACB" BorderColor="#8C9B9A" BorderWidth="5"/>
         </StackLayout>
         </Frame>
 
@@ -42,8 +42,8 @@
                 <Label Text="Uploud file accordiong to this format:"  FontSize="20" FontAttributes="Bold"/>
             <Image Source="FileFormat.jpg" Aspect="AspectFit"/>
                 <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                    <Button HorizontalOptions="FillAndExpand" Text="Copy format" CornerRadius="15" BackgroundColor="#B6CACB"/>
-                    <Button HorizontalOptions="FillAndExpand" Text="Upload format" CornerRadius="15" BackgroundColor="#B6CACB"/>
+                    <Button HorizontalOptions="FillAndExpand" Text="Copy format" CornerRadius="15" BackgroundColor="#B6CACB" BorderColor="#8C9B9A" BorderWidth="5"/>
+                    <Button HorizontalOptions="FillAndExpand" Text="Upload format" CornerRadius="15" BackgroundColor="#B6CACB" BorderColor="#8C9B9A" BorderWidth="5"/>
                 </StackLayout>
             </StackLayout>
         </Frame>
@@ -56,13 +56,13 @@
                 <SearchBar/>
                 <ListView/>
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
-                <Button HorizontalOptions="FillAndExpand" Text="Remove" CornerRadius="15" BackgroundColor="#B6CACB"/>
-                <Button HorizontalOptions="FillAndExpand" Text="Update"  CornerRadius="15" BackgroundColor="#B6CACB"/>
+                    <Button HorizontalOptions="FillAndExpand" Text="Remove" CornerRadius="15" BackgroundColor="#B6CACB" BorderColor="#8C9B9A" BorderWidth="5" />
+                    <Button HorizontalOptions="FillAndExpand" Text="Update"  CornerRadius="15" BackgroundColor="#B6CACB" BorderColor="#8C9B9A" BorderWidth="5" />
             </StackLayout>
         </StackLayout>
         </Frame>
 
-        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="3" x:Name="SubmitAll" Text="Submit all"  CornerRadius="15" BackgroundColor="PowderBlue" Command="{Binding SubmitAllCommand}"/>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="3" x:Name="SubmitAll" Text="Submit all"  CornerRadius="15" BorderColor="#8C9B9A" BorderWidth="5"  BackgroundColor="PowderBlue" Command="{Binding SubmitAllCommand}"/>
 
     </Grid>
  

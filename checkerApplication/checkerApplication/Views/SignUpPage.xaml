@@ -13,7 +13,7 @@
     <ContentPage.Content>
         <Grid BackgroundColor="White" Padding="0,10,30,0" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -27,7 +27,7 @@
                 Grid.Column="2"
                 Grid.ColumnSpan="2"
                 Grid.RowSpan="4"
-                Grid.Row="0"
+                Grid.Row="1"
                 VerticalOptions="EndAndExpand"
                 
                 >

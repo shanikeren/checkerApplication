@@ -9,57 +9,58 @@
             <Grid x:Name="UpdateLineGrid" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-        <StackLayout Grid.ColumnSpan="2">
-            <Frame x:Name="AddOutLineFrame" BorderColor="Gray"  
+                    <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.ColumnSpan="2" FlowDirection="MatchParent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                <Frame x:Name="AddOutLineFrame" BorderColor="Gray"  
        CornerRadius="5">
-                <StackLayout x:Name="AddOutLine"  Spacing="2"   >
-                    <StackLayout  Orientation="Horizontal"  >
-                        <Entry x:Name="OutlineName" Placeholder="outline name" HorizontalOptions="StartAndExpand" />
-                        <Entry x:Name="OutlineLimit" Placeholder="outline limit" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                    <!--  should be only int  -->
-                    <Button Text="add outline" BackgroundColor="#B6CACB" VerticalOptions="EndAndExpand" BorderColor="#8C9B9A" BorderWidth="5"
+                    <StackLayout x:Name="AddOutLine"  Spacing="2"   >
+                        <Entry x:Name="OutlineName" Placeholder="outline name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"  />
+                        <Entry x:Name="OutlineLimit" Placeholder="outline limit" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                        <!--  should be only int  -->
+                        <Button Text="add outline" BackgroundColor="#B6CACB" VerticalOptions="EndAndExpand" BorderColor="#8C9B9A" BorderWidth="5"
                         CornerRadius="12" />
-                </StackLayout>
-            </Frame>
-
-            <Frame x:Name="AddLineFrame" BorderColor="Gray" Grid.ColumnSpan="2" 
-       CornerRadius="5">
-                <StackLayout x:Name="AddLine"  Spacing="2" HorizontalOptions="FillAndExpand" >
-                    <StackLayout  Orientation="Horizontal" >
-                        <Entry x:Name="LineName" Placeholder="line name" HorizontalOptions="StartAndExpand" />
-                        <Entry x:Name="ChooseOutline" Placeholder="choose outline"  HorizontalOptions="CenterAndExpand"/>
-                        <Entry x:Name="LineLimit" Placeholder="line limit"  HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
+                </Frame>
 
-                    <!--  should be some kind of rolling list  -->
-                    <!--  should be only int  -->
-                    <Button Text="add line" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
+                <Frame x:Name="AddLineFrame" BorderColor="Gray" 
+       CornerRadius="5" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
+                    <StackLayout x:Name="AddLine"  Spacing="2" HorizontalOptions="FillAndExpand" >
+                        <Entry x:Name="LineName" Placeholder="line name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                        <Entry x:Name="ChooseOutline" Placeholder="choose outline"  HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
+                        <Entry x:Name="LineLimit" Placeholder="line limit"  HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
+
+                        <!--  should be some kind of rolling list  -->
+                        <!--  should be only int  -->
+                        <Button Text="add line" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
                         CornerRadius="12" />
-                </StackLayout>
-            </Frame>
+                    </StackLayout>
+                </Frame>
 
-        </StackLayout>
+            </StackLayout>
+        
 
       
 
                 
         <StackLayout x:Name="ExistingItems" Grid.Column="2">
-                    <Label Text="existing lines:" />
+                    <Label Text="existing lines:"  FontSize="20"/>
                     <!--sholud be dynamic list of the existing line (2 lists)
                     with options of remove or change-->
                 </StackLayout>
-                <Image x:Name="Logo" Source="CornerLogo.png" Grid.Row="0" Grid.Column="4" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
-        <Button Text="submit all" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="2" Grid.RowSpan="1" BorderColor="#8C9B9A" BorderWidth="5"  BackgroundColor="PowderBlue" CornerRadius="15" Command="{Binding SubmitCommand}" />
+                <Image x:Name="Logo" Source="CornerLogo.png" Grid.Row="0" Grid.Column="4" WidthRequest="150" Aspect="AspectFit" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand"/>
+        <Button Text="submit all" Grid.Column="4" Grid.Row="4" BorderColor="#8C9B9A" BorderWidth="5"  BackgroundColor="PowderBlue" CornerRadius="15" Command="{Binding SubmitCommand}" />
             </Grid>
             
 </ContentPage>

@@ -21,6 +21,7 @@ namespace checkerApplication.Views
               case Device.iOS:
                   break;
               case Device.Android:
+                    
                   break;
               case Device.UWP:
                     DishName.WidthRequest = 175;

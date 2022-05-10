@@ -23,8 +23,8 @@
         <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
                 x:Name="SL1"
                 Padding="10">
-            <Entry Placeholder="Email" ClearButtonVisibility="WhileEditing" />
-            <Entry Placeholder="Password" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" />
+            <Entry x:Name="email" Placeholder="Email" ClearButtonVisibility="WhileEditing" />
+            <Entry x:Name="passeord" Placeholder="Password" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" />
             <StackLayout Orientation="Horizontal" WidthRequest="300" >
                 <Button
                         x:Name=" EnterButton"

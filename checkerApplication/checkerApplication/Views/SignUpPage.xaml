@@ -33,17 +33,17 @@
                 >
                 <!--THIS SL IN UWP - ROW=2, PHONE - ROW = 0 -->
                 <Entry
-                    Placeholder="Email" ClearButtonVisibility="WhileEditing" />
+                  x:Name="email"  Placeholder="Email" ClearButtonVisibility="WhileEditing" />
                 <Entry
-                    Placeholder="Confirm Email" ClearButtonVisibility="WhileEditing"/>
+                   x:Name="reEmail" Placeholder="Confirm Email" ClearButtonVisibility="WhileEditing"/>
                 <Entry
-                    IsPassword="{Binding Path=HidePassword}"
+                    x:Name="password" IsPassword="{Binding Path=HidePassword}"
                     Placeholder="Password" ClearButtonVisibility="WhileEditing"/>
                 <Entry
-                    IsPassword="{Binding Path=HidePassword}"
+                    x:Name="rePassword" IsPassword="{Binding Path=HidePassword}"
                     Placeholder="Confirm Password" ClearButtonVisibility="WhileEditing"/>
                 <Entry
-                    BindingContext="{Binding TempEmail}"
+                   x:Name="restName" BindingContext="{Binding TempEmail}"
                     Placeholder="Restaurant Name" ClearButtonVisibility="WhileEditing"/>
                 <Button
                 x:Name="DismissSignButton"

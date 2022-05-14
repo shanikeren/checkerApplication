@@ -12,6 +12,7 @@ namespace checkerApplication
     public partial class App : Application
     {
         public static HubConnection HubConn { get; private set; }
+        public MainPage mainPage = new MainPage();
         public App()
         {
             InitializeComponent();
@@ -29,7 +30,12 @@ namespace checkerApplication
 
 
             MainPage = new NavigationPage(new MainPage()) { };
+            DependencyService.Register<MockDataStore>();
+            MainPage = new NavigationPage(mainPage) {
+                BarBackgroundColor = Color.DarkBlue,BarTextColor = Color.White
+            };
         }
+
 
         protected override void OnStart()
         {

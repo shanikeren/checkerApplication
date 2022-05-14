@@ -2,11 +2,15 @@
 <ContentPage
     x:Class="checkerApplication.Views.UpdateLinesPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels"
     Title="Update Lines"
     BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <local:UpdateLinesViewModel/>
+    </ContentPage.BindingContext>
     
-            <Grid x:Name="UpdateLineGrid" Padding="10">
+    <Grid x:Name="UpdateLineGrid" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />

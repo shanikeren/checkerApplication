@@ -15,6 +15,7 @@ namespace checkerApplication.ViewModels
         public Command ManagerOptionsCommand { get; }
         public ObservableCollection<string> AllNotes { get; set; } = new ObservableCollection<string>();
        
+        public Command GoBackCommand { get; }
 
   
 
@@ -36,6 +37,10 @@ namespace checkerApplication.ViewModels
                 var ManagerOptionsPage = new ManagerOptionsPage();
                 ManagerOptionsPage.BindingContext = ManagerOptionsVM;
                 await Application.Current.MainPage.Navigation.PushAsync(ManagerOptionsPage);
+            });
+
+            GoBackCommand = new Command(async () => {
+               
             });
         }
 

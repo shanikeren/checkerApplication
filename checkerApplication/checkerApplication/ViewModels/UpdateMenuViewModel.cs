@@ -13,10 +13,7 @@ namespace checkerApplication.ViewModels
         public UpdateMenuViewModel()
         {
             SubmitAllCommand = new Command(async () => {
-                var ManagerOptionsVM = new ManagerOptionsViewModel();
-                var ManagerOptionsPage = new ManagerOptionsPage();
-                ManagerOptionsPage.BindingContext = ManagerOptionsVM;
-                await Application.Current.MainPage.Navigation.PushAsync(ManagerOptionsPage);
+                await Application.Current.MainPage.Navigation.PopAsync();
             });
         }
     }

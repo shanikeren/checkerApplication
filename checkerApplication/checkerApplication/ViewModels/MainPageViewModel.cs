@@ -5,13 +5,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-
+using checkerApplication;
 using Xamarin.Forms;
 
 namespace checkerApplication.ViewModels
 {
     public class MainPageViewModel : TriggerAction<ImageButton>, INotifyPropertyChanged
     {
+
+        public OptionsPage optionsPage = new OptionsPage();
+
+        public SignUpPage signUpPage = new SignUpPage();
         public Command LogInCommand { get; set; }
         public Command SignUpCommand { get; set; }
         public ObservableCollection<string> AllNotes { get; set; } = new ObservableCollection<string>();
@@ -20,17 +24,11 @@ namespace checkerApplication.ViewModels
         public MainPageViewModel()
         {
             LogInCommand = new Command(async () => {
-                var OptionsVM = new OptionsPageViewModel();
-                var OptionsPage = new OptionsPage();
-                OptionsPage.BindingContext = OptionsVM;
-                await Application.Current.MainPage.Navigation.PushAsync(OptionsPage);
+                await Application.Current.MainPage.Navigation.PushAsync(optionsPage);
             });
 
             SignUpCommand = new Command(async () => {
-                var SignUpVM = new SignUpViewModel();
-                var SignUpPage = new SignUpPage();
-                SignUpPage.BindingContext = SignUpVM;
-                await Application.Current.MainPage.Navigation.PushAsync(SignUpPage);
+                await Application.Current.MainPage.Navigation.PushAsync(signUpPage);
             });
         }
 

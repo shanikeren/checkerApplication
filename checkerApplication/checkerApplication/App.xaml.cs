@@ -8,14 +8,17 @@ namespace checkerApplication
 {
     public partial class App : Application
     {
-
+        public MainPage mainPage = new MainPage();
         public App()
         {
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new MainPage()) { };
+            MainPage = new NavigationPage(mainPage) {
+                BarBackgroundColor = Color.DarkBlue,BarTextColor = Color.White
+            };
         }
+
 
         protected override void OnStart()
         {

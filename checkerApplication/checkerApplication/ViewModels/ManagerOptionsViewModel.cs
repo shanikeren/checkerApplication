@@ -8,6 +8,9 @@ namespace checkerApplication.ViewModels
 {
     internal class ManagerOptionsViewModel
     {
+        UpdateMenuPage updateMenuPage = new UpdateMenuPage();
+
+        UpdateLinesPage updateLinesPage = new UpdateLinesPage();
         public Command UpdateLinesCommand { get; set; }
         public Command UpdateMenuCommand { get; set; }
         public Command UpdateIngredientsCommand { get; set; }
@@ -18,17 +21,11 @@ namespace checkerApplication.ViewModels
         public ManagerOptionsViewModel()
         {
             UpdateLinesCommand = new Command(async () => {
-                var UpdateLinesVM = new UpdateLinesViewModel();
-                var UpdateLinesPage = new UpdateLinesPage();
-                UpdateLinesPage.BindingContext = UpdateLinesVM;
-                await Application.Current.MainPage.Navigation.PushAsync(UpdateLinesPage);
+                await Application.Current.MainPage.Navigation.PushAsync(updateLinesPage);
             });
 
             UpdateMenuCommand = new Command(async () => {
-                var UpdateMenuVM = new UpdateMenuViewModel();
-                var UpdateMenuPage = new UpdateMenuPage();
-                UpdateMenuPage.BindingContext = UpdateMenuVM;
-                await Application.Current.MainPage.Navigation.PushAsync(UpdateMenuPage);
+                await Application.Current.MainPage.Navigation.PushAsync(updateMenuPage);
             });
 
             StatisitcsCommand = new Command(async () => {

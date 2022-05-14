@@ -24,6 +24,11 @@ namespace checkerApplication.Views
                 case Device.UWP:
                     break;
             }
+
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

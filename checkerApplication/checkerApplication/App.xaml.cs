@@ -1,19 +1,33 @@
-﻿using checkerApplication.Services;
+﻿using Microsoft.AspNetCore.SignalR.Client;
+using checkerApplication.Services;
 using checkerApplication.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Threading.Tasks;
+using CheckerDTOs;
 
 namespace checkerApplication
 {
     public partial class App : Application
     {
-
+        public static HubConnection HubConn { get; private set; }
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            HubConn = new HubConnectionBuilder()
+                .WithUrl("http://localhost:7059/restaurants")
+                .Build();
+
+            HubConn.Closed += async (error) =>
+            {
+                await Task.Delay(new Random().Next(0,5) * 1000);
+                await HubConn.StartAsync();
+               
+            };
+
+
             MainPage = new NavigationPage(new MainPage()) { };
         }
 
@@ -28,5 +42,6 @@ namespace checkerApplication
         protected override void OnResume()
         {
         }
+      
     }
 }

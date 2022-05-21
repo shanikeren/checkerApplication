@@ -8,21 +8,25 @@ namespace checkerApplication
 {
     internal class CheckerHttpClient
     {
-        
-            private readonly HttpClient checker;
-            public CheckerHttpClient(String url)
+
+            HttpRequestMessage request;
+            HttpClient client;
+             public CheckerHttpClient(String url)
             {
-                checker = new HttpClient();
-                checker.BaseAddress = new Uri(url);
-                checker.Timeout = TimeSpan.FromMinutes(5);
+            request = new HttpRequestMessage();
+            request.RequestUri = new Uri(url);
+            request.Method=HttpMethod.Get;
+            request.Headers.Add("Accept", "application/json");
+            client = new HttpClient();
+            Task<HttpResponseMessage> response = SendRequest();
             }
 
             // returns the content of the response as a string
-            public async Task<String> SendRequest()
+            public async Task<HttpResponseMessage> SendRequest()
             {
-                // get the content of the response
-                return await checker.GetStringAsync("/restaurants");
-            }
+            // get the content of the response
+            return await client.SendAsync(request);
+        }
         }
    
 }

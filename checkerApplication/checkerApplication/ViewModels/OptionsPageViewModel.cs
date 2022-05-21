@@ -39,9 +39,7 @@ namespace checkerApplication.ViewModels
                 await Application.Current.MainPage.Navigation.PushAsync(ManagerOptionsPage);
             });
 
-            GoBackCommand = new Command(async () => {
-               
-            });
+     
         }
 
     }

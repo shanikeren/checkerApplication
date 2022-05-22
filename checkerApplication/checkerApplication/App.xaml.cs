@@ -10,38 +10,51 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using Xamarin.Essentials;
 
 namespace checkerApplication
 {
-    public class Dish
-    {
-
-        public int LineId { get; set; }
-        public int RestMenuId { get; set; }
-        public DishType Type { get; set; }
-
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ID { get; set; }
-    }
-    public enum DishType
-    {
-        UnDefined,
-        Starter,
-        Main,
-        Dessert
-    }
     public partial class App : Application
     {
         // public static HubConnection HubConn { get; private set; }
        
         public MainPage mainPage = new MainPage();
-        //CheckerHttpClient checkerHttpClient = new CheckerHttpClient("http://localhost:7059/restaurant");
-       // List<Restaurant> restaurants = new List<Restaurant>();
+        public static HttpClient client { get; private set; }
+        public static DishDataStore dishData { get; private set; }
+        private readonly HttpClientHandler handler = new HttpClientHandler();
+        // List<Restaurant> restaurants = new List<Restaurant>();
+
+        // so the app can work for both the Android and not Android Platforms
+        private string BaseAddress =
+    DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:7059" : "https://localhost:7059";
 
         public App()
         {
+            bool isDebug = false;
+
             InitializeComponent();
+            
+            // registering DataStore to be able to send HTTP things
+            DependencyService.Register<DishDataStore>();
+
+            // makes SSL certificate for using localhost at debug
+            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            {
+                if (cert.Issuer.Equals("CN=localhost"))
+                    return true;
+                return errors == System.Net.Security.SslPolicyErrors.None;
+            };
+            
+#if DEBUG
+            isDebug = true;
+#endif
+            // creating the client as needed with baseAddress
+            client = isDebug ? new HttpClient(handler) : new HttpClient();
+            client.BaseAddress = new Uri(BaseAddress);
+            client.Timeout = new TimeSpan(0, 0, 30);
+
+            dishData = new DishDataStore();
+
 
 
             /*   HubConn = new HubConnectionBuilder()
@@ -55,8 +68,10 @@ namespace checkerApplication
 
                };*/
             /*Task<IEnumerable<Restaurant>> task = GetItemsAsync();*/
-            System.Console.WriteLine("ssss");
+
+//            System.Console.WriteLine("ssss");
            MainPage = new NavigationPage(new test()) { };
+
            /* DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(new test()) {
                 BarBackgroundColor = Color.DarkBlue,BarTextColor = Color.White

@@ -6,27 +6,26 @@ using System.Threading.Tasks;
 
 namespace checkerApplication
 {
-    internal class CheckerHttpClient
+    public class CheckerHttpClient
     {
 
-            HttpRequestMessage request;
-            HttpClient client;
-             public CheckerHttpClient(String url)
-            {
-            request = new HttpRequestMessage();
+        private HttpRequestMessage request;
+        private HttpClient client;
+        public CheckerHttpClient(String url)
+        {
+            /*request = new HttpRequestMessage();
             request.RequestUri = new Uri(url);
             request.Method=HttpMethod.Get;
-            request.Headers.Add("Accept", "application/json");
+            request.Headers.Add("Accept", "application/json");*/
             client = new HttpClient();
-            Task<HttpResponseMessage> response = SendRequest();
-            }
+            client.BaseAddress = new Uri(url);
+        }
 
             // returns the content of the response as a string
-            public async Task<HttpResponseMessage> SendRequest()
+            public async Task<String> SendRequest(string url)
             {
-            // get the content of the response
-            return await client.SendAsync(request);
-        }
+            return await client.GetStringAsync(url);
+            }
         }
    
 }

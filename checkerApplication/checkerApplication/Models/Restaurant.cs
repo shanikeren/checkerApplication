@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace checkerApplication
+namespace checkerApplication.Models
 {
-    internal class Restaurant
+    public class Restaurant
     {
         public string Name { get; set; }
+
         private string Email { get; set; }
+
         private string Password { get; set; }
 
-        // fluff
         public string Phone { get; set; }
+
         public string ContactName { get; set; }
+
+        public List<RestMenu> Menus { get; set; } = new List<RestMenu>();
+
+        public List<Line> Lines { get; set; } = new List<Line>();
+
+        public List<ServingArea> ServingAreas { get; set; } = new List<ServingArea>();
     }
 }
+

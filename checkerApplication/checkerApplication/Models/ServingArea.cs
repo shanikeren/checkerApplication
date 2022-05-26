@@ -4,7 +4,7 @@ using System.Text;
 
 namespace checkerApplication.Models
 {
-    internal class ServingArea
+    public class ServingArea
     {
 
         private Dictionary<int, OrderItem> zones = new Dictionary<int, OrderItem>();

@@ -11,12 +11,13 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using Xamarin.Essentials;
-
+using checkerApplication.Models;
 namespace checkerApplication
 {
     public partial class App : Application
     {
         // public static HubConnection HubConn { get; private set; }
+        public Restaurant restaurant = new Restaurant();
        
         public MainPage mainPage = new MainPage();
         public static HttpClient client { get; private set; }
@@ -70,7 +71,7 @@ namespace checkerApplication
             /*Task<IEnumerable<Restaurant>> task = GetItemsAsync();*/
 
 //            System.Console.WriteLine("ssss");
-           MainPage = new NavigationPage(new test()) { };
+           MainPage = new NavigationPage(mainPage) { };
 
            /* DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(new test()) {

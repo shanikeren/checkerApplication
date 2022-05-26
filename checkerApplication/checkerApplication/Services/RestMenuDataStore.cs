@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace checkerApplication.Services
 {
-    internal class RestMenuDataStore : IDataStore<RestMenu>
+    public class RestMenuDataStore : IDataStore<RestMenu>
     {
         private readonly string extentionUri;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace checkerApplication.Services
 {
-    internal class OrderItemDataStore : IDataStore<OrderItem>
+    public class OrderItemDataStore : IDataStore<OrderItem>
     {
 
         private readonly string extentionUri;

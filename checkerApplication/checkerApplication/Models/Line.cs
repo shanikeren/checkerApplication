@@ -17,7 +17,6 @@ namespace checkerApplication.Models
         public List<Dish> Dishes { get; set; } = new List<Dish>();
 
 
-
         // practicals for actions
         private List<OrderItem> Locked = new List<OrderItem>();
         private List<OrderItem> ToDo = new List<OrderItem>();

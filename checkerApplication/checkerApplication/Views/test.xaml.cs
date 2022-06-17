@@ -19,7 +19,7 @@ namespace checkerApplication.Views
     {
         /*private string url = "https://localhost:44319/dishes";
         private HttpClient client = new HttpClient();*/
-        private ObservableCollection<Dish> _dish;
+        private ObservableCollection<Restaurant> _dish;
 
         public test()
         {
@@ -32,7 +32,7 @@ namespace checkerApplication.Views
             /*var content = App.checkerHttpClient.GetStringAsync("/dishes").Result;
             var post = JsonConvert.DeserializeObject<List<Dish>>(content);*/
 
-            _dish = new ObservableCollection<Dish>(await App.dishData.GetItemsAsync());
+            _dish = new ObservableCollection<Restaurant>(await App.restaurantDataStore.GetItemsAsync());
             dishListView.ItemsSource = _dish;
             base.OnAppearing();
             

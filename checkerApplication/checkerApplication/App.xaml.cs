@@ -16,14 +16,13 @@ namespace checkerApplication
 {
     public partial class App : Application
     {
-        // public static HubConnection HubConn { get; private set; }
-        public Restaurant restaurant = new Restaurant();
+        public static Restaurant restaurant;
        
         public MainPage mainPage = new MainPage();
+        public static RestaurantDataStore restaurantDataStore { get; private set; }
         public static HttpClient client { get; private set; }
         public static DishDataStore dishData { get; private set; }
         private readonly HttpClientHandler handler = new HttpClientHandler();
-        // List<Restaurant> restaurants = new List<Restaurant>();
 
         // so the app can work for both the Android and not Android Platforms
         private string BaseAddress =
@@ -37,7 +36,7 @@ namespace checkerApplication
             
             // registering DataStore to be able to send HTTP things
             DependencyService.Register<DishDataStore>();
-
+            DependencyService.Register<RestaurantDataStore>();
             // makes SSL certificate for using localhost at debug
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
             {
@@ -55,26 +54,12 @@ namespace checkerApplication
             client.Timeout = new TimeSpan(0, 0, 30);
 
             dishData = new DishDataStore();
+            restaurantDataStore = new RestaurantDataStore();
 
+           DependencyService.Register<MockDataStore>();
+            MainPage = new NavigationPage(mainPage) { };
 
-
-            /*   HubConn = new HubConnectionBuilder()
-                   .WithUrl("http://localhost:7059/restaurants")
-                   .Build();
-
-               HubConn.Closed += async (error) =>
-               {
-                   await Task.Delay(new Random().Next(0, 5) * 1000);
-                   await HubConn.StartAsync();
-
-               };*/
-            /*Task<IEnumerable<Restaurant>> task = GetItemsAsync();*/
-
-//            System.Console.WriteLine("ssss");
-           MainPage = new NavigationPage(mainPage) { };
-
-           /* DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new test()) {
+            /*MainPage = new NavigationPage(new test()) {
                 BarBackgroundColor = Color.DarkBlue,BarTextColor = Color.White
             };*/
         }

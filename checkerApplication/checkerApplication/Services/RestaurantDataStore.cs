@@ -1,6 +1,8 @@
 ﻿using checkerApplication.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,12 +15,15 @@ namespace checkerApplication.Services
 
         public RestaurantDataStore()
         {
-            this.extentionUri = "/restaurant";
+            this.extentionUri = "/Restaurants";
 
         }
-        public Task<bool> AddItemAsync(Restaurant item)
+        public async Task<bool> AddItemAsync(Restaurant item)
         {
-            throw new NotImplementedException();
+            var itemInJson = JsonConvert.SerializeObject(item);
+            var input = new StringContent(itemInJson,Encoding.UTF8,"application/json");
+            var res = await App.client.PostAsync(extentionUri,input);
+            return res.Equals("1");
         }
 
         public Task<bool> DeleteItemAsync(string id)
@@ -34,7 +39,7 @@ namespace checkerApplication.Services
         public async Task<IEnumerable<Restaurant>> GetItemsAsync(bool forceRefresh = false)
         {
             string res = App.client.GetStringAsync(extentionUri).Result;
-            List<Restaurant> listy = JsonSerializer.Deserialize<List<Restaurant>>(res);
+            List<Restaurant> listy = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(res);
             return listy;
         }
 

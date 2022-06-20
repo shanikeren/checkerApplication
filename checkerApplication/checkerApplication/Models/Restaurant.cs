@@ -6,6 +6,7 @@ namespace checkerApplication.Models
 {
     public class Restaurant
     {
+        public int Id { get; set; }
         public string name { get; set; }
 
         public string email { get; set; }
@@ -26,7 +27,9 @@ namespace checkerApplication.Models
         {
             this.name = name;
             this.email = email;
-            this.password = password;     
+            this.password = password;
+            this.phone = "0525381648";
+            this.contactName = "Anna Zak";
         }
     }
 }

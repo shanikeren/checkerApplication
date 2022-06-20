@@ -4,27 +4,25 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace checkerApplication.Services
 {
-    public class RestaurantDataStore : IDataStore<Restaurant>
+    public class MakerDataStore
     {
+
         private readonly string extentionUri;
 
-        public RestaurantDataStore()
+        public MakerDataStore()
         {
-            this.extentionUri = "/Restaurants";
+            this.extentionUri = "/Makers";
 
         }
-        public async Task<bool> AddItemAsync(Restaurant item)
+        public async Task<bool> AddItemAsync(Maker item)
         {
             var itemInJson = JsonConvert.SerializeObject(item);
-            var input = new StringContent(itemInJson,Encoding.UTF8,"application/json");
+            var input = new StringContent(itemInJson, Encoding.UTF8, "application/json");
             var res = await App.client.PostAsync(extentionUri, input);
-
-
             return res.Equals("1");
         }
 
@@ -38,16 +36,17 @@ namespace checkerApplication.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Restaurant>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Maker>> GetItemsAsync(bool forceRefresh = false)
         {
             string res = App.client.GetStringAsync(extentionUri).Result;
-            List<Restaurant> listy = System.Text.Json.JsonSerializer.Deserialize<List<Restaurant>>(res);
+            List<Maker> listy = System.Text.Json.JsonSerializer.Deserialize<List<Maker>>(res);
             return listy;
         }
 
-        public Task<bool> UpdateItemAsync(Restaurant item)
+        public Task<bool> UpdateItemAsync(Maker item)
         {
             throw new NotImplementedException();
         }
     }
 }
+

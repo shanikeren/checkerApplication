@@ -14,7 +14,7 @@ namespace checkerApplication.ViewModels
 {
     public class SignUpViewModel : TriggerAction<ImageButton>, INotifyPropertyChanged
     {
-        private OptionsPage optionsPage = new OptionsPage();
+        public ManagerOptionsPage menagerOptionsPage = new ManagerOptionsPage();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -93,7 +93,7 @@ namespace checkerApplication.ViewModels
               //      ObservableCollection<Restaurant> res = new ObservableCollection<Restaurant>(await App.restaurantDataStore.GetItemsAsync());
                      
                     await App.restaurantDataStore.AddItemAsync(App.restaurant);
-                    await Application.Current.MainPage.Navigation.PushAsync(optionsPage);
+                    await Application.Current.MainPage.Navigation.PushAsync(menagerOptionsPage);
                 }
             });
         }

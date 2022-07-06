@@ -5,7 +5,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using checkerApplication.Models;
 using System.Net.Http;
+
 namespace checkerApplication.Services
+
 {
     public class LineDataStore : IDataStore<Line>
     {
@@ -13,18 +15,30 @@ namespace checkerApplication.Services
 
         public LineDataStore()
         {
-            this.extentionUri = "/Lines";
+            this.extentionUri = "/lines";
         }
 
-        public Task<bool> AddItemAsync(Dish item)
+        public async Task<bool> AddItemAsync(Line item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var itemInJson = JsonSerializer.Serialize(item);
+                var input = new StringContent(itemInJson, Encoding.UTF8, "application/json");
+                var res = await App.client.PostAsync(extentionUri, input);
+                if (res != null)
+                {
+                       var jsonString = await res.Content.ReadAsStringAsync();
+                       App.restaurant.lines.Add(System.Text.Json.JsonSerializer.Deserialize<Line>(jsonString));
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        public Task<bool> AddItemAsync(Line item)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public Task<bool> DeleteItemAsync(string id)
         {
@@ -57,10 +71,6 @@ namespace checkerApplication.Services
         {
             throw new NotImplementedException();
         }
-
-        Task<IEnumerable<Line>> IDataStore<Line>.GetItemsAsync(bool forceRefresh)
-        {
-            throw new NotImplementedException();
-        }
     }
+       
 }

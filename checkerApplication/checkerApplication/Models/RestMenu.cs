@@ -6,11 +6,18 @@ namespace checkerApplication.Models
 {
     public class RestMenu
     {
-        public int RestaurantId { get; set; }
+        public int restaurantId { get; set; }
 
-        public string Name { get; set; }
+        public string name { get; set; }
 
-        public List<Dish> Dishes { get; set; } = new List<Dish>();
+        public List<Dish> dishes { get; set; } = new List<Dish>();
+        public int id { get; set; }
+
+        public RestMenu(int restaurantId, string name)
+        {
+            this.restaurantId = restaurantId;
+            this.name = name;
+        }
     }
 }
 

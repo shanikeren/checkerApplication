@@ -15,19 +15,29 @@ namespace checkerApplication.Services
 
         public RestaurantDataStore()
         {
-            this.extentionUri = "/Restaurants";
+            this.extentionUri = "/restaurants";
 
         }
         public async Task<bool> AddItemAsync(Restaurant item)
         {
-            var itemInJson = JsonConvert.SerializeObject(item);
-            var input = new StringContent(itemInJson,Encoding.UTF8,"application/json");
-            var res = await App.client.PostAsync(extentionUri, input);
-
-
-            return res.Equals("1");
+            try
+            {
+                var itemInJson = JsonConvert.SerializeObject(item);
+                var input = new StringContent(itemInJson, Encoding.UTF8, "application/json");
+                var res = await App.client.PostAsync(extentionUri, input);
+                if (res != null)
+                {
+                    var jsonString = await res.Content.ReadAsStringAsync();
+                    App.restaurant = System.Text.Json.JsonSerializer.Deserialize<Restaurant>(jsonString);
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
-
+        
         public Task<bool> DeleteItemAsync(string id)
         {
             throw new NotImplementedException();

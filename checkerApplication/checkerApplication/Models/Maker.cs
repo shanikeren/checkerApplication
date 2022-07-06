@@ -6,11 +6,14 @@ namespace checkerApplication.Models
 {
     public class Maker
     {
-        public string Name { get; set; }
-        public string Line { get; set; }
-        public int Id { get; set; }
+        public string name { get; set; }
+        public string line { get; set; }
+        public int id { get; set; }
 
-
-
+        public Maker(string name, string line)
+        {
+            this.name = name;
+            this.line = line;
+        }
     }
 }

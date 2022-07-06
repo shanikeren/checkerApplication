@@ -6,7 +6,7 @@ namespace checkerApplication.Models
 {
     public class Restaurant
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
 
         public string email { get; set; }
@@ -19,10 +19,10 @@ namespace checkerApplication.Models
 
         public List<RestMenu> menus { get; set; } = new List<RestMenu>();
 
-        public List<Line> lines { get; set; } = new List<Line>();
+        public List<Line> lines { get; set; }
 
         public List<ServingArea> servingAreas { get; set; } = new List<ServingArea>();
-
+        public List<Maker> makers { get; set; } = new List<Maker>();
         public Restaurant(string name, string email, string password)
         {
             this.name = name;
@@ -30,6 +30,10 @@ namespace checkerApplication.Models
             this.password = password;
             this.phone = "0525381648";
             this.contactName = "Anna Zak";
+            lines =  new List<Line>();
+        }
+        public Restaurant() {
+            lines = new List<Line>();
         }
     }
 }

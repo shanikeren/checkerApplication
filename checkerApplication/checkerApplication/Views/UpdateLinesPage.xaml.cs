@@ -15,7 +15,7 @@ namespace checkerApplication.Views
         public UpdateLinesPage()
         {
             InitializeComponent();
-
+            
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:

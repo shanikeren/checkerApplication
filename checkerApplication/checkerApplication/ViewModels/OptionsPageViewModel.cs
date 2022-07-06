@@ -14,13 +14,7 @@ namespace checkerApplication.ViewModels
         public Command LinesCommand { get; }
         public Command ManagerOptionsCommand { get; }
         public ObservableCollection<string> AllNotes { get; set; } = new ObservableCollection<string>();
-       
         public Command GoBackCommand { get; }
-
-  
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
     
         public OptionsPageViewModel()
 
@@ -38,10 +32,7 @@ namespace checkerApplication.ViewModels
                 ManagerOptionsPage.BindingContext = ManagerOptionsVM;
                 await Application.Current.MainPage.Navigation.PushAsync(ManagerOptionsPage);
             });
-
-     
         }
-
     }
 }
 

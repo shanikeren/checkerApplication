@@ -21,11 +21,6 @@ namespace checkerApplication.ViewModels
 
         public Command GoBackCommand { get; }
 
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
         public DishesOptionsPageViewModel()
 
         {
@@ -36,9 +31,6 @@ namespace checkerApplication.ViewModels
             UpdateOrRremoveCommand = new Command(async () => {
                 await Application.Current.MainPage.Navigation.PushAsync(updateDishesPage);
             });
-
-
         }
-
     }
 }

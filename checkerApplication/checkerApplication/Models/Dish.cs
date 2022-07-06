@@ -15,8 +15,21 @@ namespace checkerApplication.Models
         public string description { get; set; }
         public int id { get; set; }
 
-    }
+       public Dish()
+        {
 
+        }
+        public Dish(int lineId, int restMenuId, DishType type, int price, string name, string description)
+        {
+            this.lineId = lineId;
+            this.restMenuId = restMenuId;
+            this.type = type;
+            this.price = price;
+            this.name = name;
+            this.description = description;
+        }
+    }
+    
     public enum DishType
     {
         UnDefined,

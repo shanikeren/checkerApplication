@@ -20,10 +20,22 @@ namespace checkerApplication.Services
         }
         public async Task<bool> AddItemAsync(Maker item)
         {
-            var itemInJson = JsonConvert.SerializeObject(item);
-            var input = new StringContent(itemInJson, Encoding.UTF8, "application/json");
-            var res = await App.client.PostAsync(extentionUri, input);
-            return res.Equals("1");
+            try
+            {
+                var itemInJson = System.Text.Json.JsonSerializer.Serialize(item);
+                var input = new StringContent(itemInJson, Encoding.UTF8, "application/json");
+                var res = await App.client.PostAsync(extentionUri, input);
+                if (res != null)
+                {
+                    var jsonString = await res.Content.ReadAsStringAsync();
+                    App.restaurant.makers.Add(System.Text.Json.JsonSerializer.Deserialize<Maker>(jsonString));
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public Task<bool> DeleteItemAsync(string id)

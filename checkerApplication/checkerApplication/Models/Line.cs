@@ -6,23 +6,34 @@ namespace checkerApplication.Models
 {
     public class Line
     {
-        public string Name { get; set; }
+        public int id;
+        public string name { get; set; }
 
-        public int ServingAreaId { get; set; } // id of serving area related to this line
+        public int servingAreaId { get; set; } // id of serving area related to this line
 
-        public int Limit { get; set; } = -1; // -1 means no limit
+        public int limit { get; set; } = -1; // -1 means no limit
 
-        public LineState State { get; set; } = LineState.Closed; // starts off closed, changes to open upon user request
+        public eLineState state { get; set; } = eLineState.Closed; // starts off closed, changes to open upon user request
 
-        public List<Dish> Dishes { get; set; } = new List<Dish>();
+        public List<Dish> dishes { get; set; } = new List<Dish>();
+        public List<Maker> makers { get; set; } = new List<Maker>();
 
 
         // practicals for actions
         private List<OrderItem> Locked = new List<OrderItem>();
         private List<OrderItem> ToDo = new List<OrderItem>();
         private List<OrderItem> Doing = new List<OrderItem>();
+
+        public Line(int limit, string name, int servingEreaID)
+        {
+            this.limit = limit;
+            this.name = name;    
+            servingAreaId = servingEreaID;
+        }
     }
-    public enum LineState
+
+    
+    public enum eLineState
     {
         Closed,
         Open,

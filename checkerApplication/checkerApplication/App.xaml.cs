@@ -16,12 +16,16 @@ namespace checkerApplication
 {
     public partial class App : Application
     {
-        public static Restaurant restaurant;
+        public static Restaurant restaurant = new Restaurant();
        
         public MainPage mainPage = new MainPage();
         public static RestaurantDataStore restaurantDataStore { get; private set; }
         public static HttpClient client { get; private set; }
         public static DishDataStore dishData { get; private set; }
+        public static ServingAreaDataStore servingAreaDataStore { get; private set; }
+        public static LineDataStore lineDataStore { get; private set; }
+        public static RestMenuDataStore restMenuDataStore { get; private set; }
+        public static MakerDataStore makerDataStore { get; private set; }
         private readonly HttpClientHandler handler = new HttpClientHandler();
 
         // so the app can work for both the Android and not Android Platforms
@@ -37,6 +41,10 @@ namespace checkerApplication
             // registering DataStore to be able to send HTTP things
             DependencyService.Register<DishDataStore>();
             DependencyService.Register<RestaurantDataStore>();
+            DependencyService.Register<ServingAreaDataStore>();
+            DependencyService.Register<LineDataStore>();
+            DependencyService.Register<RestMenuDataStore>();
+            DependencyService.Register<MakerDataStore>();
             // makes SSL certificate for using localhost at debug
             handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
             {
@@ -55,8 +63,12 @@ namespace checkerApplication
 
             dishData = new DishDataStore();
             restaurantDataStore = new RestaurantDataStore();
+            servingAreaDataStore = new ServingAreaDataStore();
+            lineDataStore = new LineDataStore();
+            restMenuDataStore = new RestMenuDataStore();
+            makerDataStore = new MakerDataStore();
 
-           DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(mainPage) { };
 
             /*MainPage = new NavigationPage(new test()) {
@@ -76,26 +88,5 @@ namespace checkerApplication
         protected override void OnResume()
         {
         }
-
-        
-       /* private async Task<IEnumerable<Restaurant>> GetItemsAsync(bool forceRefresh = false)
-        {
-            // generate the response into a ToDoList object (list of the DTO with prettier printing)
-            HttpResponseMessage res = (await client.SendRequest());
-            if (res.IsSuccessStatusCode)
-            {
-                HttpContent content = res.Content;
-
-                List<ToDo> listy = JsonSerializer.Deserialize<List<ToDo>>(await content.ReadAsStringAsync());
-                return listy;
-            }
-            else
-            {
-                return new List<ToDo>();
-            }
-            restaurants = JsonSerializer.Deserialize<List<Restaurant>>(await checkerHttpClient.SendRequest());
-            return restaurants;
-        }*/
-
     }
 }

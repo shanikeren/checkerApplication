@@ -90,9 +90,9 @@ namespace checkerApplication.ViewModels
 
                 if (makeRest())
                 {
-              //      ObservableCollection<Restaurant> res = new ObservableCollection<Restaurant>(await App.restaurantDataStore.GetItemsAsync());
-                     
                     await App.restaurantDataStore.AddItemAsync(App.restaurant);
+                    RestMenu restMenu = new RestMenu(App.restaurant.id, "basic");
+                    await App.restMenuDataStore.AddItemAsync(restMenu);
                     await Application.Current.MainPage.Navigation.PushAsync(menagerOptionsPage);
                 }
             });

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using checkerApplication;
 using Xamarin.Forms;
+using checkerApplication.Models;
 
 namespace checkerApplication.ViewModels
 {
@@ -24,6 +25,8 @@ namespace checkerApplication.ViewModels
         public MainPageViewModel()
         {
             LogInCommand = new Command(async () => {
+                RestMenu restMenu = new RestMenu(1009, "basic");
+                await App.restMenuDataStore.AddItemAsync(restMenu);
                 await Application.Current.MainPage.Navigation.PushAsync(menagerOptionsPage);
             });
 

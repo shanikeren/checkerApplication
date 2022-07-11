@@ -5,86 +5,113 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-
+using System.Windows.Input;
 using Xamarin.Forms;
+using checkerApplication.Models;
+using System.Runtime.CompilerServices;
 
 namespace checkerApplication.ViewModels
 {
     public class SignUpViewModel : TriggerAction<ImageButton>, INotifyPropertyChanged
     {
+        public ManagerOptionsPage menagerOptionsPage = new ManagerOptionsPage();
+
         public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<string> UserDetails { get; set; } = new ObservableCollection<string>();
-        public Command SignCommand { get; }
 
-
-        private string _mTempUserName;
-        private string _mTempPassword;
-        private string _mTempEmail;
-        public string TempUserName
+        public void onPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            get => _mTempUserName;
+            var hendler = PropertyChanged;
+            hendler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private string Email;
+        public string email
+        {
+            get => Email;
             set
             {
-                _mTempUserName = value;
-                var args = new PropertyChangedEventArgs(nameof(TempUserName));
-                PropertyChanged?.Invoke(this, args);
+                if (Email != value) { Email = value; }
+                onPropertyChanged();
             }
         }
-        public string TempEmail
+        private string ReEmail;
+        public string reEmail
         {
-            get => _mTempEmail;
+            get => ReEmail;
             set
             {
-                _mTempEmail = value;
-                var args = new PropertyChangedEventArgs(nameof(TempEmail));
-                PropertyChanged?.Invoke(this, args);
+                if (ReEmail != value) { ReEmail = value; }
+                onPropertyChanged();
             }
         }
-
-        public string TempPassword
+        private string Password;
+        public string password
         {
-            get => _mTempPassword;
+            get => Password;
             set
             {
-                _mTempPassword = value;
-                var args = new PropertyChangedEventArgs(nameof(TempPassword));
-                PropertyChanged?.Invoke(this, args);
+                if (Password != value) { Password = value; }
+                onPropertyChanged();
             }
         }
-        public string ShowIcon { get; set; }
-        public string HideIcon { get; set; }
-
-        bool _hidePassword = true;
-
-
-        public bool HidePassword
+        private string RePassword;
+        public string rePassword
         {
+            get => RePassword;
             set
             {
-                if (_hidePassword != value)
-                {
-                    _hidePassword = value;
-
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(HidePassword)));
-                }
+                if (RePassword != value) { RePassword = value; }
+                onPropertyChanged();
             }
-            get => _hidePassword;
         }
+        private string RestName;
+        public string restName
+        {
+            get => RestName;
+            set
+            {
+                if (RestName != value) { RestName = value; }
+                onPropertyChanged();
+            }
+        }
+
+
 
         protected override void Invoke(ImageButton sender)
         {
-            sender.Source = HidePassword ? ShowIcon : HideIcon;
-            HidePassword = !HidePassword;
+
         }
+
+        public Command SignCommand { get; }
+
         public SignUpViewModel()
         {
             SignCommand = new Command(async () =>
             {
-                var OptionsVM = new OptionsPageViewModel();
-                var OptionsPage = new OptionsPage();
-                OptionsPage.BindingContext = OptionsVM;
-                await Application.Current.MainPage.Navigation.PushAsync(OptionsPage);
+
+                if (makeRest())
+                {
+                    await App.restaurantDataStore.AddItemAsync(App.restaurant);
+                    RestMenu restMenu = new RestMenu(App.restaurant.id, "basic");
+                    await App.restMenuDataStore.AddItemAsync(restMenu);
+                    await Application.Current.MainPage.Navigation.PushAsync(menagerOptionsPage);
+                }
             });
+        }
+        private bool makeRest()
+        {
+            try
+            {
+                if (email.Equals(reEmail) && password.Equals(rePassword))
+                {
+                    App.restaurant = new Restaurant(restName, email, password);
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return false;
         }
     }
 }

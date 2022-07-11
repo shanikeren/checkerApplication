@@ -33,18 +33,18 @@
                 >
                 <!--THIS SL IN UWP - ROW=2, PHONE - ROW = 0 -->
                 <Entry
-                  x:Name="email"  Placeholder="Email" ClearButtonVisibility="WhileEditing" />
+                  x:Name="email"  Placeholder="Email" ClearButtonVisibility="WhileEditing" Text="{Binding email, Mode=TwoWay}"/>
                 <Entry
-                   x:Name="reEmail" Placeholder="Confirm Email" ClearButtonVisibility="WhileEditing"/>
+                   x:Name="reEmail" Placeholder="Confirm Email" ClearButtonVisibility="WhileEditing" Text="{Binding reEmail, Mode=TwoWay}" />
                 <Entry
                     x:Name="password" IsPassword="{Binding Path=HidePassword}"
-                    Placeholder="Password" ClearButtonVisibility="WhileEditing"/>
+                    Placeholder="Password" ClearButtonVisibility="WhileEditing" Text="{Binding password, Mode=TwoWay}"/>
                 <Entry
                     x:Name="rePassword" IsPassword="{Binding Path=HidePassword}"
-                    Placeholder="Confirm Password" ClearButtonVisibility="WhileEditing"/>
+                    Placeholder="Confirm Password" ClearButtonVisibility="WhileEditing" Text="{Binding rePassword, Mode=TwoWay}"/>
                 <Entry
-                   x:Name="restName" BindingContext="{Binding TempEmail}"
-                    Placeholder="Restaurant Name" ClearButtonVisibility="WhileEditing"/>
+                   x:Name="restName" 
+                    Placeholder="Restaurant Name" ClearButtonVisibility="WhileEditing" Text="{Binding restName, Mode=TwoWay}"/>
                 <Button
                 x:Name="DismissSignButton"
                 BackgroundColor="#B6CACB"

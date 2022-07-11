@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using checkerApplication;
 using Xamarin.Forms;
+using checkerApplication.Models;
 
 namespace checkerApplication.ViewModels
 {
     public class MainPageViewModel : TriggerAction<ImageButton>, INotifyPropertyChanged
     {
 
-        public OptionsPage optionsPage = new OptionsPage();
+        public ManagerOptionsPage menagerOptionsPage = new ManagerOptionsPage();
 
         public SignUpPage signUpPage = new SignUpPage();
         public Command LogInCommand { get; set; }
@@ -24,7 +25,7 @@ namespace checkerApplication.ViewModels
         public MainPageViewModel()
         {
             LogInCommand = new Command(async () => {
-                await Application.Current.MainPage.Navigation.PushAsync(optionsPage);
+                await Application.Current.MainPage.Navigation.PushAsync(menagerOptionsPage);
             });
 
             SignUpCommand = new Command(async () => {

@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using checkerApplication.Models;
+
 namespace checkerApplication.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class test : ContentPage
     {
-        private string url = "https://localhost:7059/dishes";
-        private HttpClient client = new HttpClient(); 
-        private ObservableCollection<Dish> _dish;
+        private ObservableCollection<Restaurant> _dish;
 
         public test()
         {
@@ -26,10 +26,9 @@ namespace checkerApplication.Views
 
         protected override async void OnAppearing()
         {
-            var content = await client.GetStringAsync(url);
-            var post = JsonConvert.DeserializeObject<List<Dish>>(content);
-            _dish = new ObservableCollection<Dish>(post); 
-            postsListView.ItemsSource = _dish;
+
+            _dish = new ObservableCollection<Restaurant>(await App.restaurantDataStore.GetItemsAsync());
+            dishListView.ItemsSource = _dish;
             base.OnAppearing();
         }
     }

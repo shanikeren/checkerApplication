@@ -2,7 +2,7 @@
 <ContentPage
     x:Class="checkerApplication.Views.UpdateLinesPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels" xmlns:checkerapplication="clr-namespace:checkerApplication"
     Title="Update Lines"
     BackgroundColor="White">
 
@@ -30,10 +30,9 @@
                 <Frame x:Name="AddOutLineFrame" BorderColor="Gray"  
        CornerRadius="5">
                     <StackLayout x:Name="AddOutLine"  Spacing="2"   >
-                        <Entry x:Name="OutlineName" Placeholder="outline name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"  />
-                        <Entry x:Name="OutlineLimit" Placeholder="outline limit" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
-                        <!--  should be only int  -->
-                        <Button Text="add outline" BackgroundColor="#B6CACB" VerticalOptions="EndAndExpand" BorderColor="#8C9B9A" BorderWidth="5"
+                    <Entry x:Name="OutlineName" Text="{Binding outlineName, Mode=TwoWay}" Placeholder="outline name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"  />
+                    <Entry x:Name="OutlineLimit" Text="{Binding outlineLimit, Mode=TwoWay}" Placeholder="outline limit" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                    <Button Text="add outline" Command="{Binding addOutlineCommand}" BackgroundColor="#B6CACB" VerticalOptions="EndAndExpand" BorderColor="#8C9B9A" BorderWidth="5"
                         CornerRadius="12" />
                     </StackLayout>
                 </Frame>
@@ -41,26 +40,28 @@
                 <Frame x:Name="AddLineFrame" BorderColor="Gray" 
        CornerRadius="5" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
                     <StackLayout x:Name="AddLine"  Spacing="2" HorizontalOptions="FillAndExpand" >
-                        <Entry x:Name="LineName" Placeholder="line name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
-                        <Entry x:Name="ChooseOutline" Placeholder="choose outline"  HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
-                        <Entry x:Name="LineLimit" Placeholder="line limit"  HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
-
-                        <!--  should be some kind of rolling list  -->
-                        <!--  should be only int  -->
-                        <Button Text="add line" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
+                    <Entry x:Name="LineName" Text="{Binding lineName, Mode=TwoWay}" Placeholder="line name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                    <Picker x:Name="ChooseOutline" ItemsSource="{Binding outlines, Mode=TwoWay}" SelectedItem="{Binding selectedOutline}" Title="choose outline"  HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
+                    <Entry x:Name="LineLimit" Text="{Binding lineLimit, Mode=TwoWay}" Placeholder="line limit"  HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
+                    <Button Text="add line"  Command="{Binding addLineCommand}" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
                         CornerRadius="12" />
                     </StackLayout>
                 </Frame>
 
             </StackLayout>
         
-
-      
-
-                
-        <StackLayout x:Name="ExistingItems" Grid.Column="2">
-                    <Label Text="existing lines:"  FontSize="20"/>
-                    <!--sholud be dynamic list of the existing line (2 lists)
+        <StackLayout x:Name="ExistingItems" Grid.Column="2" Grid.ColumnSpan="2">
+            <Frame x:Name="AddMakerFrame" BorderColor="Gray" 
+       CornerRadius="5" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
+                <StackLayout x:Name="AddMaker"  Spacing="2" HorizontalOptions="FillAndExpand" >
+                    <Entry x:Name="makerName" Text="{Binding makerName, Mode=TwoWay}" Placeholder="maker name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                    <Picker x:Name="makerLine" ItemsSource="{Binding lines, Mode=TwoWay}" SelectedItem="{Binding selectedLine}" Title="choose line"  HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
+                    <Button Text="add maker"  Command="{Binding addMakerCommand}" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
+                        CornerRadius="12" />
+                </StackLayout>
+            </Frame>
+            <Label Text="existing lines:"  FontSize="20"/>
+                    <!--sholud be dynamic list of the existing lines (2 lists)
                     with options of remove or change-->
                 </StackLayout>
                 <Image x:Name="Logo" Source="CornerLogo.png" Grid.Row="0" Grid.Column="4" WidthRequest="150" Aspect="AspectFit" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand"/>

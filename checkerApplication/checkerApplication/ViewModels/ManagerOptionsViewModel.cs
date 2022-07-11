@@ -9,7 +9,7 @@ namespace checkerApplication.ViewModels
     internal class ManagerOptionsViewModel
     {
         UpdateMenuPage updateMenuPage = new UpdateMenuPage();
-
+        DishesOptionsPage dishesOptionsPage = new DishesOptionsPage();
         UpdateLinesPage updateLinesPage = new UpdateLinesPage();
         public Command UpdateLinesCommand { get; set; }
         public Command UpdateMenuCommand { get; set; }
@@ -25,7 +25,7 @@ namespace checkerApplication.ViewModels
             });
 
             UpdateMenuCommand = new Command(async () => {
-                await Application.Current.MainPage.Navigation.PushAsync(updateMenuPage);
+                await Application.Current.MainPage.Navigation.PushAsync(dishesOptionsPage);
             });
 
             StatisitcsCommand = new Command(async () => {

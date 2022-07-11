@@ -10,24 +10,23 @@ using Xamarin.Forms.Xaml;
 namespace checkerApplication.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UpdateLinesPage : ContentPage
+    public partial class AddDishesPage : ContentPage
     {
-        public UpdateLinesPage()
+        public AddDishesPage()
         {
             InitializeComponent();
-            
+
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
                     break;
                 case Device.Android:
+
                     break;
                 case Device.UWP:
-                    OutlineName.WidthRequest = 205;
-                    OutlineLimit.WidthRequest = 205;
-                    LineName.WidthRequest = 135;
-                    ChooseOutline.WidthRequest = 135;
-                    LineLimit.WidthRequest = 135;
+                    DishName.WidthRequest = 175;
+                    DishDesc.WidthRequest = 175;
+                    DishLine.WidthRequest = 175;
                     break;
             }
         }

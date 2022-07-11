@@ -7,13 +7,13 @@ namespace checkerApplication.Models
     public class Maker
     {
         public string name { get; set; }
-        public string line { get; set; }
+        public int lineId { get; set; }
         public int id { get; set; }
 
-        public Maker(string name, string line)
+        public Maker(string name, int lineId)
         {
             this.name = name;
-            this.line = line;
+            this.lineId = lineId;
         }
     }
 }

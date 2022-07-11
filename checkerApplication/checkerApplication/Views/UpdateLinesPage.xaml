@@ -2,7 +2,7 @@
 <ContentPage
     x:Class="checkerApplication.Views.UpdateLinesPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:checkerApplication.ViewModels" xmlns:checkerapplication="clr-namespace:checkerApplication"
     Title="Update Lines"
     BackgroundColor="White">
 
@@ -41,7 +41,7 @@
        CornerRadius="5" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
                     <StackLayout x:Name="AddLine"  Spacing="2" HorizontalOptions="FillAndExpand" >
                     <Entry x:Name="LineName" Text="{Binding lineName, Mode=TwoWay}" Placeholder="line name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
-                    <Picker x:Name="ChooseOutline" ItemsSource="{Binding outlines, Mode=TwoWay}" Title="choose outline"  HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
+                    <Picker x:Name="ChooseOutline" ItemsSource="{Binding outlines, Mode=TwoWay}" SelectedItem="{Binding selectedOutline}" Title="choose outline"  HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
                     <Entry x:Name="LineLimit" Text="{Binding lineLimit, Mode=TwoWay}" Placeholder="line limit"  HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
                     <Button Text="add line"  Command="{Binding addLineCommand}" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
                         CornerRadius="12" />
@@ -50,17 +50,13 @@
 
             </StackLayout>
         
-
-      
-
-                
         <StackLayout x:Name="ExistingItems" Grid.Column="2" Grid.ColumnSpan="2">
             <Frame x:Name="AddMakerFrame" BorderColor="Gray" 
        CornerRadius="5" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" >
                 <StackLayout x:Name="AddMaker"  Spacing="2" HorizontalOptions="FillAndExpand" >
                     <Entry x:Name="makerName" Text="{Binding makerName, Mode=TwoWay}" Placeholder="maker name" HorizontalOptions="FillAndExpand" ClearButtonVisibility="WhileEditing" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
-                    <Picker x:Name="makerLine" ItemsSource="{Binding makerLine, Mode=TwoWay}" Title="choose line"  HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
-                    <Button Text="add line"  Command="{Binding addLineCommand}" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
+                    <Picker x:Name="makerLine" ItemsSource="{Binding lines, Mode=TwoWay}" SelectedItem="{Binding selectedLine}" Title="choose line"  HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
+                    <Button Text="add maker"  Command="{Binding addMakerCommand}" BackgroundColor="#B6CACB" VerticalOptions="End" BorderColor="#8C9B9A" BorderWidth="5"
                         CornerRadius="12" />
                 </StackLayout>
             </Frame>

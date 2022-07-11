@@ -17,9 +17,11 @@ namespace checkerApplication.Models
 
         public string contactName { get; set; }
 
+        public int balance { get; set; } = 0;
+
         public List<RestMenu> menus { get; set; } = new List<RestMenu>();
 
-        public List<Line> lines { get; set; }
+        public List<Line> lines { get; set; } = new List<Line>();
 
         public List<ServingArea> servingAreas { get; set; } = new List<ServingArea>();
         public List<Maker> makers { get; set; } = new List<Maker>();
@@ -30,10 +32,8 @@ namespace checkerApplication.Models
             this.password = password;
             this.phone = "0525381648";
             this.contactName = "Anna Zak";
-            lines =  new List<Line>();
         }
         public Restaurant() {
-            lines = new List<Line>();
         }
     }
 }

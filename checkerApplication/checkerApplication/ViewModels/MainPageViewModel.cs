@@ -25,8 +25,6 @@ namespace checkerApplication.ViewModels
         public MainPageViewModel()
         {
             LogInCommand = new Command(async () => {
-                RestMenu restMenu = new RestMenu(1009, "basic");
-                await App.restMenuDataStore.AddItemAsync(restMenu);
                 await Application.Current.MainPage.Navigation.PushAsync(menagerOptionsPage);
             });
 

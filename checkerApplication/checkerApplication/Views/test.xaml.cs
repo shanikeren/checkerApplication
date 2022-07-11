@@ -17,9 +17,7 @@ namespace checkerApplication.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class test : ContentPage
     {
-        /*private string url = "https://localhost:44319/dishes";
-        private HttpClient client = new HttpClient();*/
-        private ObservableCollection<ServingArea> _dish;
+        private ObservableCollection<Restaurant> _dish;
 
         public test()
         {
@@ -28,15 +26,10 @@ namespace checkerApplication.Views
 
         protected override async void OnAppearing()
         {
-            /*var content = await client.GetStringAsync(url);*/
-            /*var content = App.checkerHttpClient.GetStringAsync("/dishes").Result;
-            var post = JsonConvert.DeserializeObject<List<Dish>>(content);*/
 
-            _dish = new ObservableCollection<ServingArea>(await App.servingAreaDataStore.GetItemsAsync());
+            _dish = new ObservableCollection<Restaurant>(await App.restaurantDataStore.GetItemsAsync());
             dishListView.ItemsSource = _dish;
             base.OnAppearing();
-            
-            
         }
     }
 }

@@ -12,6 +12,8 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using Xamarin.Essentials;
 using checkerApplication.Models;
+using checkerApplication.ViewModels;
+
 namespace checkerApplication
 {
     public partial class App : Application
@@ -27,6 +29,7 @@ namespace checkerApplication
         public static RestMenuDataStore restMenuDataStore { get; private set; }
         public static MakerDataStore makerDataStore { get; private set; }
         private readonly HttpClientHandler handler = new HttpClientHandler();
+        public static AddDishesViewModel addDishesViewModel = new AddDishesViewModel();
 
         // so the app can work for both the Android and not Android Platforms
         private string BaseAddress =

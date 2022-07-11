@@ -17,7 +17,7 @@ namespace checkerApplication.Models
 
         public List<Line> lines { get; set; } = new List<Line>();
 
-        public int id;
+        public int id { get; set; }
 
         //zoomNum is the limit for me 
         public ServingArea(int restaurantId, int zoneNum, string name)

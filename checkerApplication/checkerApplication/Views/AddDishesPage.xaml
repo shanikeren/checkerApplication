@@ -4,9 +4,7 @@
              x:Class="checkerApplication.Views.AddDishesPage"
              Title="Add Dish"  BackgroundColor="White" FlowDirection="MatchParent" NavigationPage.HasBackButton="True" NavigationPage.HasNavigationBar="True" 
              >
-    <ContentPage.BindingContext>
-        <local:AddDishesViewModel/>
-    </ContentPage.BindingContext>
+    
 
     <Grid Padding="10" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
         <Grid.RowDefinitions>
@@ -64,9 +62,10 @@
                 <Entry x:Name="DishPrice" Text="{Binding dishPrice, Mode=TwoWay}" FontAttributes="Bold" Placeholder="Dish price" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" HorizontalTextAlignment="Start" MaxLength="100" VerticalOptions="StartAndExpand" />
                 <Picker x:Name="Type" ItemsSource="{Binding types, Mode=TwoWay}" SelectedItem="{Binding selectedDishType}" FontAttributes="Bold" Title="Dish type" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" HorizontalTextAlignment="Start" VerticalOptions="StartAndExpand" />
                 <Entry x:Name="DishDesc" Text="{Binding dishDesc, Mode=TwoWay}" FontAttributes="Bold" Placeholder="Description" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand"/>
-                <Picker x:Name="DishLine" ItemsSource="{Binding lines, Mode=TwoWay}" FontAttributes="Bold" Title="Choose line name" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
-                <Picker x:Name="DishMaker" ItemsSource="{Binding makers, Mode=TwoWay}" FontAttributes="Bold" Title="Choose maker name" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                <Picker x:Name="DishLine" ItemsSource="{Binding lines, Mode=TwoWay}"  SelectedItem="{Binding selectedLine}" FontAttributes="Bold" Title="Choose line name" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                <Picker x:Name="DishMaker" ItemsSource="{Binding makers, Mode=TwoWay}" SelectedItem="{Binding selectedMaker}"  FontAttributes="Bold" Title="Choose maker name" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
                 <Entry x:Name="DishMakerFit" Text="{Binding dishMakerFit, Mode=TwoWay}" FontAttributes="Bold" Placeholder="Fit Amount" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
+                <Entry x:Name="EstMakeTime" Text="{Binding estMakeTime, Mode=TwoWay}" FontAttributes="Bold" Placeholder="Making time in minutes" HorizontalOptions="FillAndExpand" FlowDirection="MatchParent" VerticalOptions="StartAndExpand" />
                 <Button Text="Add dish" Command="{Binding AddDishCommand}" CornerRadius="15" BackgroundColor="#B6CACB" BorderColor="#8C9B9A" BorderWidth="5" FlowDirection="MatchParent" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"/>
                     </StackLayout>
         </Frame>

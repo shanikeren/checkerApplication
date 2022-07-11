@@ -25,6 +25,7 @@ namespace checkerApplication.ViewModels
 
         {
             AddDishesCommand = new Command(async () => {
+                addDishesPage.BindingContext = App.addDishesViewModel;
                 await Application.Current.MainPage.Navigation.PushAsync(addDishesPage);
             });
 

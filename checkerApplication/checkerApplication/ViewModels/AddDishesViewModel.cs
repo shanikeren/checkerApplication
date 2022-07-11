@@ -2,6 +2,7 @@
 using checkerApplication.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -10,25 +11,27 @@ using Xamarin.Forms;
 
 namespace checkerApplication.ViewModels
 {
-    internal class AddDishesViewModel
+    public class AddDishesViewModel : INotifyPropertyChanged
     {
+        public ObservableCollection<string> makers { get; set; }
+        public ObservableCollection<string> lines { get; set; }
+        public Command SubmitAllCommand { get; set; }
+        public Command AddDishCommand { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
         public void onPropertyChanged([CallerMemberName] string propertyName = null)
         {
             var hendler = PropertyChanged;
             hendler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public Command SubmitAllCommand { get; set; }
-        public Command AddDishCommand { get; set; }
         public List<string> types
         {
             get
             {
-                return Enum.GetNames(typeof(DishType)).ToList();
+                return Enum.GetNames(typeof(eDishType)).ToList();
             }
         }
-        private DishType SelectedDishType;
-        public DishType selectedDishType
+        private eDishType SelectedDishType;
+        public eDishType selectedDishType
         {
             get
             {
@@ -39,19 +42,7 @@ namespace checkerApplication.ViewModels
                 if(SelectedDishType != value) { SelectedDishType = value; }
             }
         }
-
-        //public List<string> makers
-        //{
-        //    get
-        //    {
-        //        if (App.restaurant.makers != null)
-        //        {
-        //            return App.restaurant.makers.Select(x => x.name).ToList();
-        //        }
-        //        else return null;
-        //    }
-        //}
-        public List<string> lines { get; set; }
+  
         private string DishName;
         public string dishName
         {
@@ -62,8 +53,8 @@ namespace checkerApplication.ViewModels
                 onPropertyChanged();
             }
         }
-        private int DishPrice;
-        public int dishPrice
+        private float DishPrice;
+        public float dishPrice
         {
             get => DishPrice;
             set
@@ -92,21 +83,108 @@ namespace checkerApplication.ViewModels
                 onPropertyChanged();
             }
         }
+        private float EstMakeTime;
+        public float estMakeTime
+        {
+            get => EstMakeTime;
+            set
+            {
+                if (EstMakeTime != value) { EstMakeTime = value; }
+                onPropertyChanged();
+            }
+        }
+        private string SelectedLine;
+        public string selectedLine
+        {
+            get => SelectedLine;
+            set
+            {
+                if (SelectedLine != value) { SelectedLine = value; }
+                onPropertyChanged();
+            }
+        }
+        private string SelectedMaker;
+        public string selectedMaker
+        {
+            get => SelectedMaker;
+            set
+            {
+                if (SelectedMaker != value) { SelectedMaker = value; }
+                onPropertyChanged();
+            }
+        }
         public AddDishesViewModel()
         {
-            if (App.restaurant.servingAreas.Count != 0)
-            {
-                lines = App.restaurant.servingAreas.Select(x => x.name).ToList();
-            }
+            updateLines();
+            updateMakers();
+            lines = new ObservableCollection<string>();
+            makers = new ObservableCollection<string>();
             SubmitAllCommand = new Command(async () => {
                 await Application.Current.MainPage.Navigation.PopAsync();
             });
 
             AddDishCommand = new Command(async () =>
             {
-                Dish dish = new Dish(1, 1,SelectedDishType, DishPrice, dishName, DishDesc);
-                await App.dishData.AddItemAsync(dish);
+                int lineId = getLineId(selectedLine);
+                int makerId = getMakerId(selectedMaker);
+                Dish dish = new Dish(lineId, App.restaurant.menus[0].id,SelectedDishType, DishPrice, dishName, DishDesc,makerId, dishMakerFit, estMakeTime);
+                bool res = await App.dishData.AddItemAsync(dish);
+                if (res)
+                {
+                    dishDesc = null; 
+                    dishName = null;
+                    dishPrice = 0;
+                    dishMakerFit = 0;
+                    estMakeTime = 0;
+                    selectedDishType = eDishType.UnDefined;
+                    selectedLine = null;
+                    selectedMaker = null;
+                }
             });
+        }
+        public int getLineId(string lineToGet)
+        {
+            foreach (Line line in App.restaurant.lines)
+            {
+                if (line.name.Equals(lineToGet)) { return line.id; }
+            }
+            return -1;
+
+        }
+        public int getMakerId(string makerToGet)
+        {
+            foreach (Maker maker in App.restaurant.makers)
+            {
+                if (maker.name.Equals(makerToGet)) { return maker.id; }
+            }
+            return -1;
+
+        }
+        public void updateLines()
+        {
+            if (App.restaurant.lines.Count != 0)
+            {
+                foreach (Line line in App.restaurant.lines)
+                {
+                    if (!lines.Contains(line.name))
+                    {
+                        lines.Add(line.name);
+                    }
+                }
+            }
+        }
+        public void updateMakers()
+        {
+            if (App.restaurant.makers.Count != 0)
+            {
+                foreach (Maker maker in App.restaurant.makers)
+                {
+                    if (!makers.Contains(maker.name))
+                    {
+                        makers.Add(maker.name);
+                    }
+                }
+            }
         }
     }
 }

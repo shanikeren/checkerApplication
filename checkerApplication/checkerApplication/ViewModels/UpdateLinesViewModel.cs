@@ -12,7 +12,9 @@ namespace checkerApplication.ViewModels
 {
     internal class UpdateLinesViewModel : INotifyPropertyChanged
     {
-        public IList<string> outlines { get; set; }
+        public ObservableCollection<string> outlines { get; set; }
+        public ObservableCollection<string> lines { get; set; }
+
         public Command SubmitCommand { get; }
         public Command addOutlineCommand { get; }
         public Command addLineCommand { get; }
@@ -24,7 +26,7 @@ namespace checkerApplication.ViewModels
             hendler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         private string OutlineName;
-        public string outlineName{
+        public string outlineName {
             get => OutlineName;
             set
             {
@@ -62,49 +64,61 @@ namespace checkerApplication.ViewModels
                 onPropertyChanged();
             }
         }
+
+        private string SelectedOutline;
+        public string selectedOutline
+        {
+            get => SelectedOutline;
+            set
+            {
+                if(SelectedOutline != value) { SelectedOutline = value; }
+                onPropertyChanged();
+            }
+        }
+
         private string MakerName;
         public string makerName
         {
             get => MakerName;
             set
             {
-                if(MakerName!= value) { MakerName = value; }
+                if (MakerName != value) { MakerName = value; }
                 onPropertyChanged();
             }
         }
-        private string MakerLine;
-        public string makerLine
+        private string SelectedLine;
+        public string selectedLine
         {
-            get => MakerLine;
+            get => SelectedLine; 
             set
             {
-                if(MakerLine != value) { makerLine = value; }
+                if (SelectedLine != value) { SelectedLine = value; }
                 onPropertyChanged();
             }
         }
+      
         public UpdateLinesViewModel()
         {
-            outlines = new List<string>();
-            
+            outlines = new ObservableCollection<string>();
+            lines = new ObservableCollection<string>();
+
             SubmitCommand = new Command(async () => {
                 await Application.Current.MainPage.Navigation.PopAsync();
             });
 
             addOutlineCommand = new Command(async () =>
             {
-                if(OutlineName != null)
+                if (OutlineName != null)
                 {
                     ServingArea serving = new ServingArea(App.restaurant.id, OutlineLimit, OutlineName);
                     bool res = await App.servingAreaDataStore.AddItemAsync(serving);
-                    outlineLimit = 0;
+
                     if (res)
                     {
-                        foreach (ServingArea servingArea in App.restaurant.servingAreas)
-                        {
-                            outlines.Add(servingArea.name);
-                        }
+                        updateServingAreas();
+                        outlineLimit = 0;
                         outlineName = null;
-                    } 
+                    }
                 }
             });
 
@@ -112,28 +126,76 @@ namespace checkerApplication.ViewModels
             {
                 if (LineName != null && lineLimit != 0)
                 {
-                    Line line = new Line(lineLimit, lineName, 2);
+                    int outlineid = getOutlineId(selectedOutline);
+                    Line line = new Line(lineLimit, lineName, outlineid);
+                   
+
                     bool res = await App.lineDataStore.AddItemAsync(line);
                     if (res)
                     {
+                        updateLines();
                         lineLimit = 0;
                         lineName = null;
+                        selectedOutline = null;
+                        App.addDishesViewModel.updateLines();
                     }
                 }
             });
+
             addMakerCommand = new Command(async () =>
             {
-                Maker maker = new Maker(MakerName, MakerLine);
+                int lineId = getLineId(selectedLine);
+                Maker maker = new Maker(MakerName, lineId);
                 bool res = await App.makerDataStore.AddItemAsync(maker);
                 if (res)
                 {
-                    makerLine = null;
+                    selectedLine = null;
                     makerName = null;
+                    App.addDishesViewModel.updateMakers();
                 }
             });
         }
 
-     
+        public int getOutlineId(string outline)
+        {
+            foreach (ServingArea servingArea in App.restaurant.servingAreas)
+            {
+                if (servingArea.name.Equals(outline)) { return servingArea.id; }
+            }
+            return -1;
+
+        }
+        public int getLineId(string lineToGet)
+        {
+            foreach (Line line in App.restaurant.lines)
+            {
+                if (line.name.Equals(lineToGet)) { return line.id; }
+            }
+            return -1;
+
+        }
+
+        public void updateServingAreas()
+        {
+            foreach (ServingArea servingArea in App.restaurant.servingAreas)
+            {
+                if (!outlines.Contains(servingArea.name))
+                {
+                    outlines.Add(servingArea.name);
+                }
+            }
+        }
+
+        public void updateLines()
+        {
+            foreach (Line line in App.restaurant.lines)
+            {
+                if (!lines.Contains(line.name))
+                {
+                    lines.Add(line.name);
+                }
+            }
+        }
     }
 }
 
